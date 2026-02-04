@@ -1,5 +1,6 @@
 "use client";
 
+import type { HTMLAttributeReferrerPolicy } from "react";
 import { useEffect, useRef, useState } from "react";
 
 type DeferredIframeProps = {
@@ -10,6 +11,7 @@ type DeferredIframeProps = {
   allow?: string;
   loading?: "lazy" | "eager";
   rootMargin?: string;
+  referrerPolicy?: HTMLAttributeReferrerPolicy;
 };
 
 export function DeferredIframe({
@@ -19,7 +21,8 @@ export function DeferredIframe({
   iframeClassName,
   allow,
   loading = "lazy",
-  rootMargin = "200px"
+  rootMargin = "600px",
+  referrerPolicy
 }: DeferredIframeProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -28,6 +31,11 @@ export function DeferredIframe({
     if (isVisible) return;
     const node = ref.current;
     if (!node) return;
+
+    if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
+      setIsVisible(true);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -51,6 +59,7 @@ export function DeferredIframe({
           title={title}
           allow={allow}
           loading={loading}
+          referrerPolicy={referrerPolicy}
           className={iframeClassName}
         />
       ) : (

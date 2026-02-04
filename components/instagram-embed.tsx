@@ -40,6 +40,7 @@ export function InstagramEmbed({
         allow="encrypted-media; clipboard-write; picture-in-picture"
         wrapperClassName="h-full w-full"
         iframeClassName="block h-[620px] w-full -mt-24 pointer-events-none"
+        rootMargin="800px"
       />
       <a
         href={url}

@@ -91,8 +91,10 @@ export default async function IceriklerPage() {
                   src={src}
                   title="Spotify Podcast"
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="eager"
                   wrapperClassName="h-[352px]"
                   iframeClassName="block h-full w-full"
+                  rootMargin="900px"
                 />
               ))}
             </div>

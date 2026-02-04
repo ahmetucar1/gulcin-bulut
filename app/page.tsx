@@ -283,8 +283,10 @@ export default async function HomePage() {
                       src={src}
                       title="Spotify Podcast"
                       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                      loading="eager"
                       wrapperClassName="h-[352px]"
                       iframeClassName="block h-full w-full"
+                      rootMargin="900px"
                     />
                   ))}
                 </div>
@@ -427,12 +429,14 @@ export default async function HomePage() {
           </div>
 
           <div className="overflow-hidden rounded-3xl border border-border/70 bg-white/70 shadow-soft">
-            <iframe
+            <DeferredIframe
               src={mapEmbedUrl}
               title="Harita"
-              className="h-[320px] w-full md:h-[360px]"
-              loading="lazy"
+              wrapperClassName="h-[320px] w-full md:h-[360px]"
+              iframeClassName="h-full w-full"
               referrerPolicy="no-referrer-when-downgrade"
+              loading="eager"
+              rootMargin="700px"
             />
           </div>
         </div>

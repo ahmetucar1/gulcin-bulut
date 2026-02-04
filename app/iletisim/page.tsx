@@ -1,5 +1,6 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 
+import { DeferredIframe } from "@/components/deferred-iframe";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getContact } from "@/lib/content";
@@ -71,12 +72,14 @@ export default function IletisimPage() {
         </div>
 
         <div className="overflow-hidden rounded-3xl border border-border/70 bg-white/70 shadow-soft">
-          <iframe
+          <DeferredIframe
             src={mapEmbedUrl}
             title="Harita"
-            className="h-[320px] w-full md:h-[400px]"
-            loading="lazy"
+            wrapperClassName="h-[320px] w-full md:h-[400px]"
+            iframeClassName="h-full w-full"
             referrerPolicy="no-referrer-when-downgrade"
+            loading="eager"
+            rootMargin="700px"
           />
         </div>
 

@@ -4,8 +4,10 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   GoogleAuthProvider,
+  getRedirectResult,
   onAuthStateChanged,
   signInWithPopup,
+  signInWithRedirect,
   signOut
 } from "firebase/auth";
 
@@ -87,6 +89,26 @@ export function AdminPanel({
 
   const auth = useMemo(() => getFirebaseAuth(), []);
 
+  const mapAuthError = (error: unknown) => {
+    const code = (error as { code?: string })?.code ?? "";
+    switch (code) {
+      case "auth/unauthorized-domain":
+        return "Bu domain Firebase tarafından yetkilendirilmemiş. Firebase Console > Authentication > Settings > Authorized domains bölümüne Vercel domainini ekleyin.";
+      case "auth/popup-blocked":
+        return "Tarayıcı giriş penceresini engelledi. Yönlendirme ile giriş denenecek.";
+      case "auth/operation-not-supported-in-this-environment":
+        return "Bu ortamda popup giriş desteklenmiyor. Yönlendirme ile giriş denenecek.";
+      case "auth/popup-closed-by-user":
+        return "Giriş penceresi kapatıldı. Tekrar deneyin.";
+      case "auth/network-request-failed":
+        return "Ağ hatası oluştu. İnternet bağlantısını kontrol edin.";
+      case "auth/invalid-api-key":
+        return "Firebase API anahtarı eksik veya hatalı görünüyor.";
+      default:
+        return code ? `Giriş yapılamadı (${code}).` : "Giriş yapılamadı. Lütfen tekrar deneyin.";
+    }
+  };
+
   const isAllowedUser = useCallback(
     (user: { uid: string; email?: string | null }) => {
     if (adminUids.length && adminUids.includes(user.uid)) return true;
@@ -105,6 +127,12 @@ export function AdminPanel({
       setAuthError("Firebase istemci ayarları bulunamadı.");
       return;
     }
+
+    getRedirectResult(auth).catch((error) => {
+      if (error) {
+        setAuthError(mapAuthError(error));
+      }
+    });
 
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (!user) {
@@ -323,7 +351,20 @@ export function AdminPanel({
               const provider = new GoogleAuthProvider();
               await signInWithPopup(auth, provider);
             } catch (error) {
-              setAuthError("Giriş yapılamadı. Lütfen tekrar deneyin.");
+              const code = (error as { code?: string })?.code ?? "";
+              const message = mapAuthError(error);
+              setAuthError(message);
+              if (
+                code === "auth/popup-blocked" ||
+                code === "auth/operation-not-supported-in-this-environment"
+              ) {
+                try {
+                  const provider = new GoogleAuthProvider();
+                  await signInWithRedirect(auth, provider);
+                } catch (redirectError) {
+                  setAuthError(mapAuthError(redirectError));
+                }
+              }
             }
           }}
           className="mt-5 inline-flex items-center justify-center rounded-full bg-foreground px-6 py-2 text-sm font-medium text-background"

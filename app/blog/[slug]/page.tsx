@@ -40,9 +40,6 @@ export default async function BlogPostPage({
             ) : null}
             <div className="space-y-2">
               <h1 className="text-2xl md:text-3xl">{post.title}</h1>
-              <p className="text-sm text-foreground/60">
-                {new Date(post.date).toLocaleDateString("tr-TR")}
-              </p>
             </div>
           </div>
         </div>
