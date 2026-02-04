@@ -1,0 +1,36 @@
+{
+  "posts": [
+    {
+      "slug": "wefwe",
+      "title": "wefwe",
+      "excerpt": "gfrewgıreg gfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıre…",
+      "content": "gfrewgıreg gfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreggfrewgıreg",
+      "image": "/images/blog/wefwe.png",
+      "date": "2026-02-04T16:18:58.202Z"
+    },
+    {
+      "slug": "blog",
+      "title": "blog",
+      "excerpt": "Ctrl + C npm run dev Ctrl + C npm run dev Ctrl + C npm run dev Ctrl + C npm run dev Ctrl + C npm run dev Ctrl + C npm run dev Ctrl + C npm run dev Ctrl + C npm run dev Ctrl + C npm…",
+      "content": "Ctrl + C\r\nnpm run dev\r\nCtrl + C\r\nnpm run dev\r\nCtrl + C\r\nnpm run dev\r\nCtrl + C\r\nnpm run dev\r\nCtrl + C\r\nnpm run dev\r\nCtrl + C\r\nnpm run dev\r\nCtrl + C\r\nnpm run dev\r\nCtrl + C\r\nnpm run dev\r\nCtrl + C\r\nnpm run dev\r\nCtrl + C\r\nnpm run dev\r\nCtrl + C\r\nnpm run dev",
+      "image": "/images/blog/blog.png",
+      "date": "2026-02-04T16:11:57.938Z"
+    },
+    {
+      "slug": "bu-bir-denemedir",
+      "title": "Bu bir denemedir",
+      "excerpt": "deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme deneme denem…",
+      "content": "deneme deneme deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme  deneme",
+      "image": "/images/blog/bu-bir-denemedir.png",
+      "date": "2026-02-04T16:02:29.694Z"
+    },
+    {
+      "slug": "psikanaliz",
+      "title": "Psikanaliz",
+      "excerpt": "Psikanaliz İyidir",
+      "content": "Psikanaliz İyidir",
+      "image": "/images/blog/psikanaliz.png",
+      "date": "2026-02-04T12:04:40.817Z"
+    }
+  ]
+}

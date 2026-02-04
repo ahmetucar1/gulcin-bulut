@@ -1,0 +1,155 @@
+@import "@fontsource/sora/300.css";
+@import "@fontsource/sora/400.css";
+@import "@fontsource/sora/500.css";
+@import "@fontsource/sora/600.css";
+@import "@fontsource/fraunces/400.css";
+@import "@fontsource/fraunces/500.css";
+@import "@fontsource/fraunces/600.css";
+@import "@fontsource/fraunces/700.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Sora";
+  --font-serif: "Fraunces";
+  --background: 244 247 245;
+  --foreground: 24 26 25;
+  --muted: 104 110 107;
+  --accent: 92 132 118;
+  --accent-2: 236 221 206;
+  --accent-3: 178 210 206;
+  --border: 214 221 218;
+  --ring: 92 132 118;
+}
+
+* {
+  border-color: rgb(var(--border) / 0.6);
+}
+
+body {
+  @apply bg-background text-foreground font-sans antialiased;
+  background-image:
+    radial-gradient(circle at top left, rgb(var(--accent-2) / 0.25), transparent 55%),
+    radial-gradient(circle at bottom right, rgb(var(--accent-3) / 0.2), transparent 55%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4 {
+  @apply font-serif tracking-tight;
+}
+
+p {
+  @apply text-base leading-relaxed text-foreground/90;
+}
+
+::selection {
+  background-color: rgb(var(--accent) / 0.2);
+}
+
+.richtext {
+  @apply space-y-6 text-foreground/90;
+}
+
+.richtext h2 {
+  @apply text-2xl md:text-3xl mt-10;
+}
+
+.richtext h3 {
+  @apply text-xl md:text-2xl mt-8;
+}
+
+.richtext ul {
+  @apply list-disc pl-6 space-y-2 text-foreground/85;
+}
+
+.richtext strong {
+  @apply text-foreground;
+}
+
+.section-padding {
+  @apply py-16 md:py-24;
+}
+
+.subconscious-message {
+  @apply font-serif text-sm uppercase tracking-[0.25em] transition-all duration-700 md:text-base;
+  color: rgb(var(--foreground) / 0.5);
+  transform: translateY(8px);
+}
+
+.logo-mark {
+  --logo-stroke: 1.4px;
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: var(--logo-stroke) solid currentColor;
+}
+
+.logo-tree,
+.logo-face {
+  position: absolute;
+  top: 8px;
+  width: 14px;
+  height: 20px;
+}
+
+.logo-tree {
+  left: 7px;
+}
+
+.logo-tree::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  border: var(--logo-stroke) solid currentColor;
+}
+
+.logo-tree::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 12px;
+  width: 0;
+  height: 10px;
+  border-left: var(--logo-stroke) solid currentColor;
+}
+
+.logo-face {
+  right: 7px;
+  border: var(--logo-stroke) solid currentColor;
+  border-left: none;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.logo-face::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 6px;
+  width: 6px;
+  height: 8px;
+  border-left: var(--logo-stroke) solid currentColor;
+  border-bottom: var(--logo-stroke) solid currentColor;
+  border-bottom-left-radius: 8px;
+}
+
+.logo-face::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 7px;
+  width: 2px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+}
