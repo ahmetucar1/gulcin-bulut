@@ -12,9 +12,13 @@ export function SpotifyEmbed({ embedUrl }: { embedUrl: string }) {
         style={{ border: 0 }}
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
       />
-      <div
-        className="pointer-events-none absolute left-3 top-3 h-24 w-24 rounded-xl bg-black/20 bg-cover bg-center shadow-soft sm:h-28 sm:w-28"
-        style={{ backgroundImage: `url("${coverSrc}")` }}
+      <img
+        src={coverSrc}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute left-3 top-3 z-20 h-24 w-24 rounded-xl object-cover shadow-soft sm:h-28 sm:w-28"
+        loading="eager"
+        decoding="async"
       />
     </div>
   );
