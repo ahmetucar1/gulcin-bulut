@@ -21,7 +21,8 @@ export default function IletisimPage() {
           </p>
           <h1 className="text-4xl md:text-5xl">İletişime geçin</h1>
           <p className="text-lg text-foreground/80">
-            Randevu, danışmanlık süreci ve detaylar için ulaşabilirsiniz.
+            Aydın / Efeler’de randevu, danışmanlık süreci ve detaylar için
+            ulaşabilirsiniz.
           </p>
         </div>
 
@@ -87,6 +88,17 @@ export default function IletisimPage() {
                   Haritada aç
                 </a>
               </Button>
+              {contact.googleBusinessUrl ? (
+                <Button asChild size="sm" variant="outline">
+                  <a
+                    href={contact.googleBusinessUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Google İşletme Profilini aç
+                  </a>
+                </Button>
+              ) : null}
             </CardContent>
           </Card>
         </div>

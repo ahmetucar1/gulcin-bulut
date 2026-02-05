@@ -58,7 +58,7 @@ export default async function RootLayout({
       addressRegion: "Aydın",
       addressCountry: "TR"
     },
-    sameAs: social.profileUrl ? [social.profileUrl] : []
+    sameAs: [social.profileUrl, contact.googleBusinessUrl].filter(Boolean)
   };
 
   const serviceSchema = {
@@ -69,7 +69,11 @@ export default async function RootLayout({
     description: siteConfig.description,
     telephone: contact.phone,
     priceRange: "$$",
-    areaServed: "Aydın",
+    hasMap: contact.mapUrl,
+    areaServed: [
+      { "@type": "AdministrativeArea", name: "Aydın" },
+      { "@type": "AdministrativeArea", name: "Efeler" }
+    ],
     address: {
       "@type": "PostalAddress",
       streetAddress: "Kurtuluş, 2011. Sk. Bina Numara 5, Kat 5 Daire:29",
@@ -77,7 +81,8 @@ export default async function RootLayout({
       addressLocality: "Efeler",
       addressRegion: "Aydın",
       addressCountry: "TR"
-    }
+    },
+    sameAs: [social.profileUrl, contact.googleBusinessUrl].filter(Boolean)
   };
 
   return (

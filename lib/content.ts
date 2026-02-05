@@ -37,6 +37,7 @@ export function getContact() {
     emailHref: string;
     address: string;
     mapUrl: string;
+    googleBusinessUrl?: string;
   };
 }
 

@@ -81,8 +81,8 @@ export default async function HomePage() {
               Güvenli, sakin ve destekleyici bir danışmanlık alanı.
             </h1>
             <p className="py-2 text-lg text-foreground/80 md:text-xl">
-              Online ve yüz yüze seanslarla; ilişki, stres ve yaşam geçişlerinde
-              birlikte ilerliyoruz.
+              Aydın / Efeler’de online ve yüz yüze seanslarla; ilişki, stres ve
+              yaşam geçişlerinde birlikte ilerliyoruz.
             </p>
             <div className="flex flex-wrap gap-4 py-2">
               <Button asChild size="lg">
@@ -367,6 +367,17 @@ export default async function HomePage() {
                 <MessageCircle className="h-4 w-4 text-emerald-500" />
                 WhatsApp&apos;tan yaz
               </a>
+              {contact.googleBusinessUrl ? (
+                <a
+                  href={contact.googleBusinessUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-3 rounded-2xl border border-border/70 bg-white/80 px-4 py-3 transition hover:text-foreground"
+                >
+                  <MapPin className="h-4 w-4 text-amber-500" />
+                  Google İşletme Profilini görüntüle
+                </a>
+              ) : null}
               <a
                 href={contact.phoneHref}
                 className="flex items-center gap-3 rounded-2xl border border-border/70 bg-white/80 px-4 py-3 transition hover:text-foreground"

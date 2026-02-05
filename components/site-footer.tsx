@@ -50,6 +50,16 @@ export async function SiteFooter() {
           >
             WhatsApp üzerinden yaz
           </a>
+          {contact.googleBusinessUrl ? (
+            <a
+              href={contact.googleBusinessUrl}
+              className="block hover:text-foreground"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Google İşletme Profili
+            </a>
+          ) : null}
           <a href={contact.emailHref} className="block hover:text-foreground">
             {contact.email}
           </a>
