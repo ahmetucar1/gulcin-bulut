@@ -90,12 +90,13 @@ export default async function IceriklerPage() {
                 <div key={card.embedUrl} className="w-full space-y-3">
                   <div className="relative overflow-hidden rounded-2xl bg-black/10">
                     {card.thumbnailUrl ? (
-                      <Image
+                      <img
                         src={card.thumbnailUrl}
                         alt={card.title}
-                        width={600}
-                        height={600}
                         className="h-[220px] w-full object-cover"
+                        loading="lazy"
+                        decoding="async"
+                        referrerPolicy="no-referrer"
                       />
                     ) : (
                       <div className="h-[220px] w-full bg-black/10" />
