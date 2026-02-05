@@ -68,7 +68,7 @@ export default function IletisimPage() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4 text-sm">
-              <p>{contact.email}</p>
+              <p className="text-xs break-all">{contact.email}</p>
               <Button asChild size="sm" variant="outline">
                 <a href={contact.emailHref}>E-posta gönder</a>
               </Button>

@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { getContact, getSocial } from "@/lib/content";
+import { getContact } from "@/lib/content";
 import { siteConfig } from "@/lib/site";
 
 export async function SiteFooter() {
   const contact = getContact();
-  const social = await getSocial();
+  const instagramUrl = "https://www.instagram.com/psikologgulcinbulut/";
 
   return (
     <footer className="border-t border-border/70 bg-background">
@@ -73,18 +73,14 @@ export async function SiteFooter() {
           <Link href="/gizlilik" className="block hover:text-foreground">
             Gizlilik Politikası
           </Link>
-          {social.profileUrl ? (
-            <a
-              href={social.profileUrl}
-              className="block hover:text-foreground"
-              target="_blank"
-              rel="noreferrer"
-            >
-              {social.platform}
-            </a>
-          ) : (
-            <span className="block text-foreground/60">{social.platform}</span>
-          )}
+          <a
+            href={instagramUrl}
+            className="block hover:text-foreground"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Instagram
+          </a>
         </div>
           </div>
         </div>
