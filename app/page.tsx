@@ -277,13 +277,16 @@ export default async function HomePage() {
               {podcastEmbeds.length ? (
                 <div className="grid gap-4 md:grid-cols-3">
                   {podcastEmbeds.map((src) => (
-                    <div key={src} className="h-[352px] w-full">
+                    <div key={src} className="w-full">
                       <iframe
                         src={src}
                         title="Spotify Podcast"
-                        className="h-full w-full"
+                        width="100%"
+                        height="352"
+                        className="w-full rounded-xl"
+                        style={{ border: 0 }}
                         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                        loading="lazy"
+                        loading="eager"
                       />
                     </div>
                   ))}
