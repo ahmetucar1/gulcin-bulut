@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import { BlogList } from "@/components/blog-list";
 import { InstagramEmbed } from "@/components/instagram-embed";
+import { SpotifyEmbed } from "@/components/spotify-embed";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getBlogPosts, getPodcast, getSocial } from "@/lib/content";
 
@@ -85,16 +86,7 @@ export default async function IceriklerPage() {
           {podcastEmbeds.length ? (
             <div className="grid gap-4 md:grid-cols-3">
               {podcastEmbeds.map((embedUrl) => (
-                <iframe
-                  key={embedUrl}
-                  src={embedUrl}
-                  title="Spotify Podcast"
-                  width="100%"
-                  height="352"
-                  className="w-full rounded-2xl"
-                  style={{ border: 0 }}
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                />
+                <SpotifyEmbed key={embedUrl} embedUrl={embedUrl} />
               ))}
             </div>
           ) : (

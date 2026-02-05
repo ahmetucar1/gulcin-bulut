@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { DeferredIframe } from "@/components/deferred-iframe";
 import { InstagramEmbed } from "@/components/instagram-embed";
+import { SpotifyEmbed } from "@/components/spotify-embed";
 import { getAboutExcerpt, getContact, getPodcast, getSocial } from "@/lib/content";
 
 export const revalidate = 120;
@@ -276,16 +277,7 @@ export default async function HomePage() {
               {podcastEmbeds.length ? (
                 <div className="grid gap-4 md:grid-cols-3">
                   {podcastEmbeds.map((embedUrl) => (
-                    <iframe
-                      key={embedUrl}
-                      src={embedUrl}
-                      title="Spotify Podcast"
-                      width="100%"
-                      height="352"
-                      className="w-full rounded-2xl"
-                      style={{ border: 0 }}
-                      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    />
+                    <SpotifyEmbed key={embedUrl} embedUrl={embedUrl} />
                   ))}
                 </div>
               ) : (
