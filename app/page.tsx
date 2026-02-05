@@ -9,6 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { DeferredIframe } from "@/components/deferred-iframe";
 import { InstagramEmbed } from "@/components/instagram-embed";
 import { getAboutExcerpt, getContact, getPodcast, getSocial } from "@/lib/content";
+import { getSpotifyCards } from "@/lib/spotify";
 
 export const revalidate = 120;
 
@@ -57,7 +58,7 @@ const transitionMessages = [
   "Devam et."
 ];
 
-export const dynamic = "force-dynamic";
+export const revalidate = 120;
 
 export default async function HomePage() {
   const excerpt = getAboutExcerpt();
@@ -68,6 +69,7 @@ export default async function HomePage() {
     contact.address
   )}&output=embed`;
   const podcastEmbeds = podcast.embeds ?? [];
+  const podcastCards = await getSpotifyCards(podcastEmbeds);
 
   return (
     <>
@@ -275,19 +277,38 @@ export default async function HomePage() {
               <CardDescription>Podcast bölüm duyuruları.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-5">
-              {podcastEmbeds.length ? (
+              {podcastCards.length ? (
                 <div className="grid gap-4 md:grid-cols-3">
-                  {podcastEmbeds.map((src) => (
-                    <div key={src} className="w-full">
+                  {podcastCards.map((card) => (
+                    <div key={card.embedUrl} className="w-full space-y-3">
+                      <div className="relative overflow-hidden rounded-2xl bg-black/10">
+                        {card.thumbnailUrl ? (
+                          <Image
+                            src={card.thumbnailUrl}
+                            alt={card.title}
+                            width={600}
+                            height={600}
+                            className="h-[220px] w-full object-cover"
+                          />
+                        ) : (
+                          <div className="h-[220px] w-full bg-black/10" />
+                        )}
+                      </div>
+                      <div className="space-y-1">
+                        <p className="text-sm font-medium">{card.title}</p>
+                        {card.author ? (
+                          <p className="text-xs text-foreground/60">{card.author}</p>
+                        ) : null}
+                      </div>
                       <iframe
-                        src={src}
+                        src={card.embedUrl}
                         title="Spotify Podcast"
                         width="100%"
-                        height="352"
+                        height="152"
                         className="w-full rounded-xl"
                         style={{ border: 0 }}
                         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                        loading="eager"
+                        loading="lazy"
                       />
                     </div>
                   ))}
