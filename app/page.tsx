@@ -67,9 +67,12 @@ export default async function HomePage() {
     contact.address
   )}&output=embed`;
   const podcastEmbeds = podcast.embeds ?? [];
-  const podcastCards = Array.isArray(podcast.cards)
-    ? podcast.cards
+  const storedCards = Array.isArray(podcast.cards) ? podcast.cards : [];
+  const storedHasThumbnails = storedCards.some((card) => card.thumbnailUrl);
+  const podcastCards = storedHasThumbnails
+    ? storedCards
     : await getSpotifyCards(podcastEmbeds);
+  const showThumbnails = podcastCards.some((card) => card.thumbnailUrl);
 
   return (
     <>
@@ -278,42 +281,60 @@ export default async function HomePage() {
             </CardHeader>
             <CardContent className="space-y-5">
               {podcastCards.length ? (
-                <div className="grid gap-4 md:grid-cols-3">
-                  {podcastCards.map((card) => (
-                    <div key={card.embedUrl} className="w-full space-y-3">
-                      <div className="relative overflow-hidden rounded-2xl bg-black/10">
-                        {card.thumbnailUrl ? (
-                          <img
-                            src={card.thumbnailUrl}
-                            alt={card.title}
-                            className="h-[220px] w-full object-cover"
-                            loading="lazy"
-                            decoding="async"
-                            referrerPolicy="no-referrer"
-                          />
-                        ) : (
-                          <div className="h-[220px] w-full bg-black/10" />
-                        )}
+                showThumbnails ? (
+                  <div className="grid gap-4 md:grid-cols-3">
+                    {podcastCards.map((card) => (
+                      <div key={card.embedUrl} className="w-full space-y-3">
+                        <div className="relative overflow-hidden rounded-2xl bg-black/10">
+                          {card.thumbnailUrl ? (
+                            <img
+                              src={card.thumbnailUrl}
+                              alt={card.title}
+                              className="h-[220px] w-full object-cover"
+                              loading="lazy"
+                              decoding="async"
+                              referrerPolicy="no-referrer"
+                            />
+                          ) : (
+                            <div className="h-[220px] w-full bg-black/10" />
+                          )}
+                        </div>
+                        <div className="space-y-1">
+                          <p className="text-sm font-medium">{card.title}</p>
+                          {card.author ? (
+                            <p className="text-xs text-foreground/60">{card.author}</p>
+                          ) : null}
+                        </div>
+                        <iframe
+                          src={card.embedUrl}
+                          title="Spotify Podcast"
+                          width="100%"
+                          height="152"
+                          className="w-full rounded-xl"
+                          style={{ border: 0 }}
+                          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                          loading="lazy"
+                        />
                       </div>
-                      <div className="space-y-1">
-                        <p className="text-sm font-medium">{card.title}</p>
-                        {card.author ? (
-                          <p className="text-xs text-foreground/60">{card.author}</p>
-                        ) : null}
-                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="grid gap-4 md:grid-cols-3">
+                    {podcastEmbeds.map((embedUrl) => (
                       <iframe
-                        src={card.embedUrl}
+                        key={embedUrl}
+                        src={embedUrl}
                         title="Spotify Podcast"
                         width="100%"
-                        height="152"
-                        className="w-full rounded-xl"
+                        height="352"
+                        className="w-full rounded-2xl"
                         style={{ border: 0 }}
                         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                         loading="lazy"
                       />
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                )
               ) : (
                 <p className="text-sm text-foreground/70">
                   Yeni bölümler yakında burada görünecek.
