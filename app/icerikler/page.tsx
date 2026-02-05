@@ -4,7 +4,6 @@ import { BlogList } from "@/components/blog-list";
 import { InstagramEmbed } from "@/components/instagram-embed";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getBlogPosts, getPodcast, getSocial } from "@/lib/content";
-import { getSpotifyCards } from "@/lib/spotify";
 
 export const revalidate = 120;
 
@@ -13,7 +12,6 @@ export default async function IceriklerPage() {
   const social = await getSocial();
   const podcast = await getPodcast();
   const podcastEmbeds = podcast.embeds ?? [];
-  const podcastCards = await getSpotifyCards(podcastEmbeds);
 
   return (
     <div className="section-padding relative overflow-hidden">
@@ -84,41 +82,19 @@ export default async function IceriklerPage() {
               Yeni bölümler ve dinleme bağlantıları.
             </p>
           </div>
-          {podcastCards.length ? (
+          {podcastEmbeds.length ? (
             <div className="grid gap-4 md:grid-cols-3">
-              {podcastCards.map((card) => (
-                <div key={card.embedUrl} className="w-full space-y-3">
-                  <div className="relative overflow-hidden rounded-2xl bg-black/10">
-                    {card.thumbnailUrl ? (
-                      <img
-                        src={card.thumbnailUrl}
-                        alt={card.title}
-                        className="h-[220px] w-full object-cover"
-                        loading="lazy"
-                        decoding="async"
-                        referrerPolicy="no-referrer"
-                      />
-                    ) : (
-                      <div className="h-[220px] w-full bg-black/10" />
-                    )}
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-sm font-medium">{card.title}</p>
-                    {card.author ? (
-                      <p className="text-xs text-foreground/60">{card.author}</p>
-                    ) : null}
-                  </div>
-                  <iframe
-                    src={card.embedUrl}
-                    title="Spotify Podcast"
-                    width="100%"
-                    height="152"
-                    className="w-full rounded-xl"
-                    style={{ border: 0 }}
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    loading="lazy"
-                  />
-                </div>
+              {podcastEmbeds.map((embedUrl) => (
+                <iframe
+                  key={embedUrl}
+                  src={embedUrl}
+                  title="Spotify Podcast"
+                  width="100%"
+                  height="352"
+                  className="w-full rounded-2xl"
+                  style={{ border: 0 }}
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                />
               ))}
             </div>
           ) : (
