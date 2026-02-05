@@ -75,6 +75,14 @@ function normalizeInstagramUrl(input: string) {
   return input.trim();
 }
 
+type PodcastCard = {
+  embedUrl: string;
+  openUrl?: string;
+  title?: string;
+  author?: string;
+  thumbnailUrl?: string | null;
+};
+
 async function getSocialFromFirestore() {
   if (!adminDb) return null;
   const snapshot = await adminDb.collection("settings").doc("social").get();
@@ -105,10 +113,13 @@ async function getPodcastFromFirestore() {
     spotifyEmbedUrl?: string;
     embeds?: string[];
     episodes?: { title: string; url: string; description: string }[];
+    cards?: PodcastCard[];
   };
   const embeds = Array.isArray(data.embeds) ? data.embeds : [];
+  const cards = Array.isArray(data.cards) ? data.cards : undefined;
   return {
     ...data,
+    cards,
     embeds: embeds
       .map((item) => normalizeSpotifyEmbed(item))
       .filter((item) => item) as string[]
@@ -230,10 +241,13 @@ export async function getPodcast() {
     spotifyEmbedUrl?: string;
     embeds?: string[];
     episodes?: { title: string; url: string; description: string }[];
+    cards?: PodcastCard[];
   };
   const embeds = Array.isArray(parsed.embeds) ? parsed.embeds : [];
+  const cards = Array.isArray(parsed.cards) ? parsed.cards : undefined;
   return {
     ...parsed,
+    cards,
     embeds: embeds
       .map((item) => normalizeSpotifyEmbed(item))
       .filter((item) => item) as string[]

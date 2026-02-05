@@ -13,7 +13,9 @@ export default async function IceriklerPage() {
   const social = await getSocial();
   const podcast = await getPodcast();
   const podcastEmbeds = podcast.embeds ?? [];
-  const podcastCards = await getSpotifyCards(podcastEmbeds);
+  const podcastCards = Array.isArray(podcast.cards)
+    ? podcast.cards
+    : await getSpotifyCards(podcastEmbeds);
 
   return (
     <div className="section-padding relative overflow-hidden">

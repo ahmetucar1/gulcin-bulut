@@ -58,8 +58,6 @@ const transitionMessages = [
   "Devam et."
 ];
 
-export const revalidate = 120;
-
 export default async function HomePage() {
   const excerpt = getAboutExcerpt();
   const contact = getContact();
@@ -69,7 +67,9 @@ export default async function HomePage() {
     contact.address
   )}&output=embed`;
   const podcastEmbeds = podcast.embeds ?? [];
-  const podcastCards = await getSpotifyCards(podcastEmbeds);
+  const podcastCards = Array.isArray(podcast.cards)
+    ? podcast.cards
+    : await getSpotifyCards(podcastEmbeds);
 
   return (
     <>
