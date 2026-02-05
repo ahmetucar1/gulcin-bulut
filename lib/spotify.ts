@@ -3,7 +3,6 @@ import { cache } from "react";
 type SpotifyOEmbed = {
   title?: string;
   author_name?: string;
-  thumbnail_url?: string;
 };
 
 export type SpotifyCard = {
@@ -48,7 +47,7 @@ export const getSpotifyCards = cache(async (embeds: string[]): Promise<SpotifyCa
         openUrl,
         title: data?.title ?? "Spotify Bölümü",
         author: data?.author_name ?? "",
-        thumbnailUrl: data?.thumbnail_url ?? null
+        thumbnailUrl: `/api/spotify-image?url=${encodeURIComponent(openUrl)}`
       } as SpotifyCard;
     })
   );
