@@ -6,7 +6,6 @@ import { TransitionMessage } from "@/components/transition-message";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { DeferredIframe } from "@/components/deferred-iframe";
 import { InstagramEmbed } from "@/components/instagram-embed";
 import { getAboutExcerpt, getContact, getPodcast, getSocial } from "@/lib/content";
 
@@ -278,16 +277,15 @@ export default async function HomePage() {
               {podcastEmbeds.length ? (
                 <div className="grid gap-4 md:grid-cols-3">
                   {podcastEmbeds.map((src) => (
-                    <DeferredIframe
-                      key={src}
-                      src={src}
-                      title="Spotify Podcast"
-                      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                      loading="eager"
-                      wrapperClassName="h-[352px]"
-                      iframeClassName="block h-full w-full"
-                      rootMargin="900px"
-                    />
+                    <div key={src} className="h-[352px] w-full">
+                      <iframe
+                        src={src}
+                        title="Spotify Podcast"
+                        className="h-full w-full"
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"
+                      />
+                    </div>
                   ))}
                 </div>
               ) : (
