@@ -359,6 +359,15 @@ export default async function HomePage() {
 
             <div className="space-y-3 text-sm text-foreground/80">
               <a
+                href="https://wa.me/905340240934?text=Merhaba%2C%20randevu%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 rounded-2xl border border-border/70 bg-white/80 px-4 py-3 transition hover:text-foreground"
+              >
+                <MessageCircle className="h-4 w-4 text-emerald-500" />
+                WhatsApp&apos;tan yaz
+              </a>
+              <a
                 href={contact.phoneHref}
                 className="flex items-center gap-3 rounded-2xl border border-border/70 bg-white/80 px-4 py-3 transition hover:text-foreground"
               >

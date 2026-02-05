@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 
 import { DeferredIframe } from "@/components/deferred-iframe";
 import { Button } from "@/components/ui/button";
@@ -25,7 +25,7 @@ export default function IletisimPage() {
           </p>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className="grid gap-6 lg:grid-cols-4">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-3 text-lg">
@@ -36,6 +36,26 @@ export default function IletisimPage() {
               <p>{contact.phone}</p>
               <Button asChild size="sm">
                 <a href={contact.phoneHref}>Ara</a>
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3 text-lg">
+                <MessageCircle className="h-4 w-4" /> WhatsApp
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-sm">
+              <p>Hızlıca mesaj gönderin.</p>
+              <Button asChild size="sm" variant="outline">
+                <a
+                  href="https://wa.me/905340240934?text=Merhaba%2C%20randevu%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  WhatsApp&apos;tan yaz
+                </a>
               </Button>
             </CardContent>
           </Card>

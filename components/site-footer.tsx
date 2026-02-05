@@ -42,6 +42,14 @@ export async function SiteFooter() {
           <a href={contact.phoneHref} className="block hover:text-foreground">
             {contact.phone}
           </a>
+          <a
+            href="https://wa.me/905340240934?text=Merhaba%2C%20randevu%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+            className="block hover:text-foreground"
+            target="_blank"
+            rel="noreferrer"
+          >
+            WhatsApp üzerinden yaz
+          </a>
           <a href={contact.emailHref} className="block hover:text-foreground">
             {contact.email}
           </a>
