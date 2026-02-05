@@ -8,7 +8,7 @@ export function SpotifyEmbed({ embedUrl }: { embedUrl: string }) {
         title="Spotify Podcast"
         width="100%"
         height="152"
-        className="relative z-10 w-full rounded-2xl"
+        className="relative z-10 h-[152px] w-full rounded-2xl sm:h-[352px]"
         style={{ border: 0 }}
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
       />
@@ -16,7 +16,7 @@ export function SpotifyEmbed({ embedUrl }: { embedUrl: string }) {
         src={coverSrc}
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute left-3 top-3 z-20 h-24 w-24 rounded-xl object-cover shadow-soft sm:h-28 sm:w-28 lg:left-2 lg:top-2 lg:h-20 lg:w-20"
+        className="pointer-events-none absolute left-3 top-3 z-20 h-24 w-24 rounded-xl object-cover shadow-soft sm:hidden"
         loading="eager"
         decoding="async"
       />
