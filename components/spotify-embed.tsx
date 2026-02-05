@@ -16,7 +16,7 @@ export function SpotifyEmbed({ embedUrl }: { embedUrl: string }) {
         src={coverSrc}
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute left-3 top-1/2 z-20 h-24 w-24 -translate-y-1/2 rounded-xl object-cover shadow-soft sm:left-28 sm:top-[58px] sm:h-36 sm:w-36 sm:translate-y-0 lg:h-40 lg:w-40"
+        className="pointer-events-none absolute left-3 top-1/2 z-20 h-24 w-24 -translate-y-1/2 rounded-xl object-cover shadow-soft sm:left-28 sm:top-[52px] sm:h-36 sm:w-36 sm:translate-y-0 lg:h-40 lg:w-40"
         loading="eager"
         decoding="async"
       />
