@@ -6,7 +6,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { getContact, getSocial } from "@/lib/content";
 import { siteConfig } from "@/lib/site";
 
-const siteImage = "/images/IMG_2588.jpeg";
+const siteImage = "/images/og-image.jpg";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
