@@ -173,12 +173,12 @@ export default async function HomePage() {
               <div className="relative overflow-hidden rounded-2xl bg-white/40 p-3 shadow-soft">
                 <div
                   className="absolute inset-0 scale-110 bg-cover bg-center blur-2xl opacity-70"
-                  style={{ backgroundImage: "url(/images/IMG_2570.jpeg)" }}
+                  style={{ backgroundImage: "url(/images/ofis.JPG)" }}
                 />
                 <div className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-xl">
                   <Image
-                    src="/images/IMG_2570.jpeg"
-                    alt="Yüz yüze danışmanlık görseli"
+                    src="/images/ofis.JPG"
+                    alt="Yüz yüze danışmanlık ofis görseli"
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-contain"
