@@ -4,18 +4,18 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "Randevu | Aydın Psikolog",
+  title: "Aydın Psikolog | Randevu | Psikolog Gülçin Bulut",
   description:
-    "Aydın’da psikolojik danışmanlık için online randevu planlayın. Uygun gün ve saatleri görüntüleyin.",
+    "Aydın psikolog randevu sayfası. Online randevu planlayın, uygun gün ve saatleri görüntüleyin.",
   openGraph: {
-    title: "Randevu | Aydın Psikolog",
+    title: "Aydın Psikolog | Randevu | Psikolog Gülçin Bulut",
     description:
-      "Aydın’da psikolojik danışmanlık için online randevu planlayın. Uygun gün ve saatleri görüntüleyin."
+      "Aydın psikolog randevu sayfası. Online randevu planlayın, uygun gün ve saatleri görüntüleyin."
   },
   twitter: {
-    title: "Randevu | Aydın Psikolog",
+    title: "Aydın Psikolog | Randevu | Psikolog Gülçin Bulut",
     description:
-      "Aydın’da psikolojik danışmanlık için online randevu planlayın. Uygun gün ve saatleri görüntüleyin."
+      "Aydın psikolog randevu sayfası. Online randevu planlayın, uygun gün ve saatleri görüntüleyin."
   }
 };
 

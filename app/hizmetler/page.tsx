@@ -3,18 +3,18 @@ import type { Metadata } from "next";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Hizmetler | Aydın Psikolog",
+  title: "Aydın Psikolog | Hizmetler | Psikolog Gülçin Bulut",
   description:
-    "Aydın’da online ve yüz yüze psikolojik danışmanlık. Süreç, gizlilik ve teknik gereksinimler hakkında detaylar.",
+    "Aydın psikolog hizmetleri: online ve yüz yüze danışmanlık. Süreç, gizlilik ve teknik gereksinimler hakkında detaylar.",
   openGraph: {
-    title: "Hizmetler | Aydın Psikolog",
+    title: "Aydın Psikolog | Hizmetler | Psikolog Gülçin Bulut",
     description:
-      "Aydın’da online ve yüz yüze psikolojik danışmanlık. Süreç, gizlilik ve teknik gereksinimler hakkında detaylar."
+      "Aydın psikolog hizmetleri: online ve yüz yüze danışmanlık. Süreç, gizlilik ve teknik gereksinimler hakkında detaylar."
   },
   twitter: {
-    title: "Hizmetler | Aydın Psikolog",
+    title: "Aydın Psikolog | Hizmetler | Psikolog Gülçin Bulut",
     description:
-      "Aydın’da online ve yüz yüze psikolojik danışmanlık. Süreç, gizlilik ve teknik gereksinimler hakkında detaylar."
+      "Aydın psikolog hizmetleri: online ve yüz yüze danışmanlık. Süreç, gizlilik ve teknik gereksinimler hakkında detaylar."
   }
 };
 
