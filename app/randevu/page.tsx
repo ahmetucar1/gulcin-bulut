@@ -4,16 +4,16 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "Aydın Psikolog | Randevu | Psikolog Gülçin Bulut",
+  title: "Randevu",
   description:
     "Aydın psikolog randevu sayfası. Online randevu planlayın, uygun gün ve saatleri görüntüleyin.",
   openGraph: {
-    title: "Aydın Psikolog | Randevu | Psikolog Gülçin Bulut",
+    title: "Aydın Psikolog | Randevu",
     description:
       "Aydın psikolog randevu sayfası. Online randevu planlayın, uygun gün ve saatleri görüntüleyin."
   },
   twitter: {
-    title: "Aydın Psikolog | Randevu | Psikolog Gülçin Bulut",
+    title: "Aydın Psikolog | Randevu",
     description:
       "Aydın psikolog randevu sayfası. Online randevu planlayın, uygun gün ve saatleri görüntüleyin."
   }

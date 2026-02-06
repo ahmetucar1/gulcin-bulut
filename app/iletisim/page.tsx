@@ -7,16 +7,16 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getContact } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Aydın Psikolog | İletişim | Psikolog Gülçin Bulut",
+  title: "İletişim",
   description:
     "Aydın psikolog iletişim bilgileri. WhatsApp, telefon ve e‑posta üzerinden ulaşabilirsiniz.",
   openGraph: {
-    title: "Aydın Psikolog | İletişim | Psikolog Gülçin Bulut",
+    title: "Aydın Psikolog | İletişim",
     description:
       "Aydın psikolog iletişim bilgileri. WhatsApp, telefon ve e‑posta üzerinden ulaşabilirsiniz."
   },
   twitter: {
-    title: "Aydın Psikolog | İletişim | Psikolog Gülçin Bulut",
+    title: "Aydın Psikolog | İletişim",
     description:
       "Aydın psikolog iletişim bilgileri. WhatsApp, telefon ve e‑posta üzerinden ulaşabilirsiniz."
   }

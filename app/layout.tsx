@@ -11,8 +11,8 @@ const siteImage = "/images/og-image-portrait.jpg";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`
+    default: "Aydın Psikolog | Psikolog Gülçin Bulut",
+    template: "Aydın Psikolog | %s"
   },
   description: siteConfig.description,
   icons: {
