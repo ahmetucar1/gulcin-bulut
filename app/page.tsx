@@ -15,18 +15,18 @@ import { getAboutExcerpt, getContact, getPodcast, getSocial } from "@/lib/conten
 export const revalidate = 120;
 
 export const metadata: Metadata = {
-  title: "Aydın / Efeler Psikolog | Psikolog Gülçin Bulut",
+  title: "Aydın Psikolog | Psikolog Gülçin Bulut",
   description:
-    "Aydın / Efeler’de online ve yüz yüze psikolojik danışmanlık. Kaygı, stres ve ilişki temalarında güvenli bir danışmanlık süreci.",
+    "Aydın’da online ve yüz yüze psikolojik danışmanlık. Kaygı, stres ve ilişki temalarında güvenli bir danışmanlık süreci.",
   openGraph: {
-    title: "Aydın / Efeler Psikolog | Psikolog Gülçin Bulut",
+    title: "Aydın Psikolog | Psikolog Gülçin Bulut",
     description:
-      "Aydın / Efeler’de online ve yüz yüze psikolojik danışmanlık. Kaygı, stres ve ilişki temalarında güvenli bir danışmanlık süreci."
+      "Aydın’da online ve yüz yüze psikolojik danışmanlık. Kaygı, stres ve ilişki temalarında güvenli bir danışmanlık süreci."
   },
   twitter: {
-    title: "Aydın / Efeler Psikolog | Psikolog Gülçin Bulut",
+    title: "Aydın Psikolog | Psikolog Gülçin Bulut",
     description:
-      "Aydın / Efeler’de online ve yüz yüze psikolojik danışmanlık. Kaygı, stres ve ilişki temalarında güvenli bir danışmanlık süreci."
+      "Aydın’da online ve yüz yüze psikolojik danışmanlık. Kaygı, stres ve ilişki temalarında güvenli bir danışmanlık süreci."
   }
 };
 
@@ -98,7 +98,7 @@ export default async function HomePage() {
               Güvenli, sakin ve destekleyici bir danışmanlık alanı.
             </h1>
             <p className="py-2 text-lg text-foreground/80 md:text-xl">
-              Aydın / Efeler’de online ve yüz yüze seanslarla; ilişki, stres ve
+              Aydın’da online ve yüz yüze seanslarla; ilişki, stres ve
               yaşam geçişlerinde birlikte ilerliyoruz.
             </p>
             <div className="flex flex-wrap gap-4 py-2">

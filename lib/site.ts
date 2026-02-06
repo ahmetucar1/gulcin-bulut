@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Psikolog Gülçin Bulut",
   description:
-    "Aydın / Efeler’de online ve yüz yüze psikolojik danışmanlık. Modern, minimal ve güven veren bir danışmanlık deneyimi.",
+    "Aydın’da online ve yüz yüze psikolojik danışmanlık. Modern, minimal ve güven veren bir danışmanlık deneyimi.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://psikologgulcin.com"
 };
 

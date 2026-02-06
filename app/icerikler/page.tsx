@@ -10,18 +10,18 @@ import { getBlogPosts, getPodcast, getSocial } from "@/lib/content";
 export const revalidate = 120;
 
 export const metadata: Metadata = {
-  title: "İçerikler | Aydın / Efeler Psikolog",
+  title: "İçerikler | Aydın Psikolog",
   description:
-    "Aydın / Efeler’de psikoloji notları, podcast bölümleri ve güncel içerikler. Psikolog Gülçin Bulut içerikleri.",
+    "Aydın’da psikoloji notları, podcast bölümleri ve güncel içerikler. Psikolog Gülçin Bulut içerikleri.",
   openGraph: {
-    title: "İçerikler | Aydın / Efeler Psikolog",
+    title: "İçerikler | Aydın Psikolog",
     description:
-      "Aydın / Efeler’de psikoloji notları, podcast bölümleri ve güncel içerikler. Psikolog Gülçin Bulut içerikleri."
+      "Aydın’da psikoloji notları, podcast bölümleri ve güncel içerikler. Psikolog Gülçin Bulut içerikleri."
   },
   twitter: {
-    title: "İçerikler | Aydın / Efeler Psikolog",
+    title: "İçerikler | Aydın Psikolog",
     description:
-      "Aydın / Efeler’de psikoloji notları, podcast bölümleri ve güncel içerikler. Psikolog Gülçin Bulut içerikleri."
+      "Aydın’da psikoloji notları, podcast bölümleri ve güncel içerikler. Psikolog Gülçin Bulut içerikleri."
   }
 };
 

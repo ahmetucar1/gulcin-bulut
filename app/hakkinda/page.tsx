@@ -7,18 +7,18 @@ import { Button } from "@/components/ui/button";
 import { getAboutMarkdown } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Hakkında | Aydın / Efeler Psikolog",
+  title: "Hakkında | Aydın Psikolog",
   description:
-    "Psikolog Gülçin Bulut’un eğitim, deneyim ve danışmanlık yaklaşımı. Aydın / Efeler’de etik ilkelere dayalı psikolojik danışmanlık.",
+    "Psikolog Gülçin Bulut’un eğitim, deneyim ve danışmanlık yaklaşımı. Aydın’da etik ilkelere dayalı psikolojik danışmanlık.",
   openGraph: {
-    title: "Hakkında | Aydın / Efeler Psikolog",
+    title: "Hakkında | Aydın Psikolog",
     description:
-      "Psikolog Gülçin Bulut’un eğitim, deneyim ve danışmanlık yaklaşımı. Aydın / Efeler’de etik ilkelere dayalı psikolojik danışmanlık."
+      "Psikolog Gülçin Bulut’un eğitim, deneyim ve danışmanlık yaklaşımı. Aydın’da etik ilkelere dayalı psikolojik danışmanlık."
   },
   twitter: {
-    title: "Hakkında | Aydın / Efeler Psikolog",
+    title: "Hakkında | Aydın Psikolog",
     description:
-      "Psikolog Gülçin Bulut’un eğitim, deneyim ve danışmanlık yaklaşımı. Aydın / Efeler’de etik ilkelere dayalı psikolojik danışmanlık."
+      "Psikolog Gülçin Bulut’un eğitim, deneyim ve danışmanlık yaklaşımı. Aydın’da etik ilkelere dayalı psikolojik danışmanlık."
   }
 };
 

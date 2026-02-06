@@ -7,18 +7,18 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getContact } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "İletişim | Aydın / Efeler Psikolog",
+  title: "İletişim | Aydın Psikolog",
   description:
-    "Aydın / Efeler’de psikolojik danışmanlık için iletişim bilgileri. WhatsApp, telefon ve e‑posta üzerinden ulaşabilirsiniz.",
+    "Aydın’da psikolojik danışmanlık için iletişim bilgileri. WhatsApp, telefon ve e‑posta üzerinden ulaşabilirsiniz.",
   openGraph: {
-    title: "İletişim | Aydın / Efeler Psikolog",
+    title: "İletişim | Aydın Psikolog",
     description:
-      "Aydın / Efeler’de psikolojik danışmanlık için iletişim bilgileri. WhatsApp, telefon ve e‑posta üzerinden ulaşabilirsiniz."
+      "Aydın’da psikolojik danışmanlık için iletişim bilgileri. WhatsApp, telefon ve e‑posta üzerinden ulaşabilirsiniz."
   },
   twitter: {
-    title: "İletişim | Aydın / Efeler Psikolog",
+    title: "İletişim | Aydın Psikolog",
     description:
-      "Aydın / Efeler’de psikolojik danışmanlık için iletişim bilgileri. WhatsApp, telefon ve e‑posta üzerinden ulaşabilirsiniz."
+      "Aydın’da psikolojik danışmanlık için iletişim bilgileri. WhatsApp, telefon ve e‑posta üzerinden ulaşabilirsiniz."
   }
 };
 
@@ -38,7 +38,7 @@ export default function IletisimPage() {
           </p>
           <h1 className="text-4xl md:text-5xl">İletişime geçin</h1>
           <p className="text-lg text-foreground/80">
-            Aydın / Efeler’de randevu, danışmanlık süreci ve detaylar için
+            Aydın’da randevu, danışmanlık süreci ve detaylar için
             ulaşabilirsiniz.
           </p>
         </div>
