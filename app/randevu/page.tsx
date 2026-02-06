@@ -44,7 +44,7 @@ export default function RandevuPage() {
               <iframe
                 src={bookingUrl}
                 title="Randevu Takvimi"
-                className="h-[70vh] min-h-[520px] w-full rounded-2xl"
+                className="h-[600px] w-full rounded-2xl"
                 loading="lazy"
               />
             </div>
