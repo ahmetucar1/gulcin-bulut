@@ -21,9 +21,8 @@ export const metadata: Metadata = {
 
 export default function RandevuPage() {
   const bookingUrl = process.env.NEXT_PUBLIC_GOOGLE_BOOKING_URL;
-  const isEmbeddable =
-    bookingUrl?.includes("calendar.google.com/calendar/appointments") ||
-    bookingUrl?.includes("calendar.google.com/calendar/u/");
+  const embedUrl = bookingUrl ? bookingUrl.replace("calendar.google.com", "calendar.google.com/calendar/embed") : "";
+  const isEmbeddable = Boolean(embedUrl);
 
   return (
     <div className="section-padding relative overflow-hidden">
@@ -43,7 +42,7 @@ export default function RandevuPage() {
           <div className="space-y-4">
             <div className="rounded-3xl border border-border/70 bg-white/70 p-3 shadow-soft">
               <iframe
-                src={bookingUrl}
+                src={embedUrl}
                 title="Randevu Takvimi"
                 className="h-[70vh] min-h-[520px] w-full rounded-2xl"
                 loading="lazy"
