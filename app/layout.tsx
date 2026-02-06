@@ -94,8 +94,8 @@ export default async function RootLayout({
     sameAs: [social.profileUrl, contact.googleBusinessUrl].filter(Boolean),
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 37.8442,
-      longitude: 27.8452
+      latitude: 37.8458426,
+      longitude: 27.8430887
     }
   };
 
