@@ -40,13 +40,21 @@ export default function RandevuPage() {
 
         {hasBookingUrl ? (
           <div className="space-y-4">
+            <div className="rounded-3xl border border-border/70 bg-white/70 p-3 shadow-soft">
+              <iframe
+                src={bookingUrl}
+                title="Randevu Takvimi"
+                className="h-[70vh] min-h-[520px] w-full rounded-2xl"
+                loading="lazy"
+              />
+            </div>
             <link
               rel="stylesheet"
               href="https://calendar.google.com/calendar/scheduling-button-script.css"
             />
             <div className="rounded-3xl border border-border/70 bg-white/70 p-10 text-center shadow-soft">
               <p className="text-lg font-medium">
-                Randevu oluşturmak için butonu kullanın.
+                Eğer iframe açılmazsa aşağıdaki butonu kullanın.
               </p>
               <p className="mt-2 text-sm text-foreground/70">
                 Google Calendar üzerinden uygun gün ve saatleri görüntüleyip
@@ -65,7 +73,7 @@ export default function RandevuPage() {
                   if (window.calendar && window.calendar.schedulingButton && target) {
                     window.calendar.schedulingButton.load({
                       url: '${bookingUrl}',
-                      color: '#000000',
+                      color: '#039BE5',
                       label: 'Randevu oluşturun',
                       target: target,
                     });
