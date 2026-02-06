@@ -6,7 +6,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { getContact, getSocial } from "@/lib/content";
 import { siteConfig } from "@/lib/site";
 
-const siteImage = "/images/og-image.jpg";
+const siteImage = "/images/og-image-portrait.jpg";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     locale: "tr_TR",
     type: "website",
-    images: [{ url: siteImage, width: 1200, height: 630, alt: siteConfig.name }]
+    images: [{ url: siteImage, width: 1200, height: 1600, alt: siteConfig.name }]
   },
   twitter: {
     card: "summary_large_image",
