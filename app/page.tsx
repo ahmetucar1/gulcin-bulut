@@ -231,6 +231,18 @@ export default async function HomePage() {
               </div>
             ))}
           </div>
+          <div className="mt-8 rounded-2xl border border-border/70 bg-white/70 p-6 text-sm text-foreground/75">
+            <p>
+              Aydın psikolog arayışında, danışmanlık sürecini güvenli ve etik bir
+              çerçevede yürütüyorum. Aydın’da yüz yüze görüşmeler ve online
+              seanslarla kaygı, stres ve ilişki temalarında destek sunuyorum.
+            </p>
+            <p className="mt-4">
+              Ofis görüşmeleri Aydın merkezde yapılır; online seanslar Aydın
+              genelinde erişilebilirlik sağlar. İhtiyaca uygun seans planı
+              birlikte oluşturulur.
+            </p>
+          </div>
         </div>
       </section>
 

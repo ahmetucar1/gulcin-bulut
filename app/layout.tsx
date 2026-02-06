@@ -91,7 +91,12 @@ export default async function RootLayout({
       addressRegion: "Aydın",
       addressCountry: "TR"
     },
-    sameAs: [social.profileUrl, contact.googleBusinessUrl].filter(Boolean)
+    sameAs: [social.profileUrl, contact.googleBusinessUrl].filter(Boolean),
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 37.8442,
+      longitude: 27.8452
+    }
   };
 
   return (
