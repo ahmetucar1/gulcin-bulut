@@ -105,6 +105,17 @@ export default async function RootLayout({
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-D018J23Z4F" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-D018J23Z4F');
+            `
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
