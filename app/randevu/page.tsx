@@ -61,8 +61,10 @@ export default function RandevuPage() {
               Bu bağlantı iframe içinde görüntülenemiyor.
             </p>
             <p className="mt-2 text-sm text-foreground/70">
-              Google Calendar “Appointment Schedules” sayfasının tam bağlantısını
-              eklememiz gerekiyor.
+              Google Calendar “Appointment Schedules” sayfasının tam
+              “calendar.google.com/calendar/appointments” bağlantısı
+              eklenirse sayfa içinden gösterilebilir. Şimdilik yeni sekmede
+              açabilirsiniz.
             </p>
             <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <Button asChild>
