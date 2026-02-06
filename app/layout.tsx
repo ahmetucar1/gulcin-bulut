@@ -16,7 +16,16 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   icons: {
-    icon: "/images/brand/favicon-2.ico"
+    icon: [
+      { url: "/favicons/favicon.ico" },
+      { url: "/favicons/favicon-128.png", sizes: "128x128", type: "image/png" },
+      { url: "/favicons/favicon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/favicons/favicon-256.png", sizes: "256x256", type: "image/png" },
+      { url: "/favicons/favicon-512.png", sizes: "512x512", type: "image/png" }
+    ],
+    apple: [
+      { url: "/favicons/favicon-180.png", sizes: "180x180", type: "image/png" }
+    ]
   },
   openGraph: {
     title: siteConfig.name,
