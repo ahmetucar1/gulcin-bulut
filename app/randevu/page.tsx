@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 
 import { Button } from "@/components/ui/button";
 
@@ -21,8 +22,7 @@ export const metadata: Metadata = {
 
 export default function RandevuPage() {
   const bookingUrl = process.env.NEXT_PUBLIC_GOOGLE_BOOKING_URL;
-  const embedUrl = bookingUrl ? bookingUrl.replace("calendar.google.com", "calendar.google.com/calendar/embed") : "";
-  const isEmbeddable = Boolean(embedUrl);
+  const hasBookingUrl = Boolean(bookingUrl);
 
   return (
     <div className="section-padding relative overflow-hidden">
@@ -38,43 +38,46 @@ export default function RandevuPage() {
           </p>
         </div>
 
-        {bookingUrl && isEmbeddable ? (
+        {hasBookingUrl ? (
           <div className="space-y-4">
-            <div className="rounded-3xl border border-border/70 bg-white/70 p-3 shadow-soft">
-              <iframe
-                src={embedUrl}
-                title="Randevu Takvimi"
-                className="h-[70vh] min-h-[520px] w-full rounded-2xl"
-                loading="lazy"
-              />
+            <link
+              rel="stylesheet"
+              href="https://calendar.google.com/calendar/scheduling-button-script.css"
+            />
+            <div className="rounded-3xl border border-border/70 bg-white/70 p-10 text-center shadow-soft">
+              <p className="text-lg font-medium">
+                Randevu oluşturmak için butonu kullanın.
+              </p>
+              <p className="mt-2 text-sm text-foreground/70">
+                Google Calendar üzerinden uygun gün ve saatleri görüntüleyip
+                randevu oluşturabilirsiniz.
+              </p>
+              <div id="gcal-scheduling-button" className="mt-6 flex justify-center" />
             </div>
+            <Script
+              src="https://calendar.google.com/calendar/scheduling-button-script.js"
+              strategy="afterInteractive"
+            />
+            <Script id="gcal-scheduling-init" strategy="afterInteractive">
+              {`
+                window.addEventListener('load', function () {
+                  var target = document.getElementById('gcal-scheduling-button');
+                  if (window.calendar && window.calendar.schedulingButton && target) {
+                    window.calendar.schedulingButton.load({
+                      url: '${bookingUrl}',
+                      color: '#000000',
+                      label: 'Randevu oluşturun',
+                      target: target,
+                    });
+                  }
+                });
+              `}
+            </Script>
             <Button asChild variant="outline">
               <a href={bookingUrl} target="_blank" rel="noreferrer">
                 Yeni sekmede aç
               </a>
             </Button>
-          </div>
-        ) : bookingUrl ? (
-          <div className="rounded-3xl border border-border/70 bg-white/70 p-10 text-center">
-            <p className="text-lg font-medium">
-              Bu bağlantı iframe içinde görüntülenemiyor.
-            </p>
-            <p className="mt-2 text-sm text-foreground/70">
-              Google Calendar “Appointment Schedules” sayfasının tam
-              “calendar.google.com/calendar/appointments” bağlantısı
-              eklenirse sayfa içinden gösterilebilir. Şimdilik yeni sekmede
-              açabilirsiniz.
-            </p>
-            <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-              <Button asChild>
-                <a href={bookingUrl} target="_blank" rel="noreferrer">
-                  Randevu sayfasını aç
-                </a>
-              </Button>
-              <Button asChild variant="outline">
-                <Link href="/iletisim">İletişim</Link>
-              </Button>
-            </div>
           </div>
         ) : (
           <div className="rounded-3xl border border-dashed border-border/70 bg-white/60 p-10 text-center">
