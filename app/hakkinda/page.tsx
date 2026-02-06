@@ -1,9 +1,26 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 
 import { Button } from "@/components/ui/button";
 import { getAboutMarkdown } from "@/lib/content";
+
+export const metadata: Metadata = {
+  title: "Hakkında | Aydın / Efeler Psikolog",
+  description:
+    "Psikolog Gülçin Bulut’un eğitim, deneyim ve danışmanlık yaklaşımı. Aydın / Efeler’de etik ilkelere dayalı psikolojik danışmanlık.",
+  openGraph: {
+    title: "Hakkında | Aydın / Efeler Psikolog",
+    description:
+      "Psikolog Gülçin Bulut’un eğitim, deneyim ve danışmanlık yaklaşımı. Aydın / Efeler’de etik ilkelere dayalı psikolojik danışmanlık."
+  },
+  twitter: {
+    title: "Hakkında | Aydın / Efeler Psikolog",
+    description:
+      "Psikolog Gülçin Bulut’un eğitim, deneyim ve danışmanlık yaklaşımı. Aydın / Efeler’de etik ilkelere dayalı psikolojik danışmanlık."
+  }
+};
 
 export default function HakkindaPage() {
   const markdown = getAboutMarkdown();

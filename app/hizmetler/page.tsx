@@ -1,4 +1,22 @@
+import type { Metadata } from "next";
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+
+export const metadata: Metadata = {
+  title: "Hizmetler | Aydın / Efeler Psikolog",
+  description:
+    "Aydın / Efeler’de online ve yüz yüze psikolojik danışmanlık. Süreç, gizlilik ve teknik gereksinimler hakkında detaylar.",
+  openGraph: {
+    title: "Hizmetler | Aydın / Efeler Psikolog",
+    description:
+      "Aydın / Efeler’de online ve yüz yüze psikolojik danışmanlık. Süreç, gizlilik ve teknik gereksinimler hakkında detaylar."
+  },
+  twitter: {
+    title: "Hizmetler | Aydın / Efeler Psikolog",
+    description:
+      "Aydın / Efeler’de online ve yüz yüze psikolojik danışmanlık. Süreç, gizlilik ve teknik gereksinimler hakkında detaylar."
+  }
+};
 
 export default function HizmetlerPage() {
   return (
@@ -13,6 +31,11 @@ export default function HizmetlerPage() {
           <p className="text-lg text-foreground/80">
             Online ve yüz yüze danışmanlık seçenekleri ile ihtiyacınıza uygun bir
             plan oluşturulur.
+          </p>
+          <p className="text-sm text-foreground/70">
+            Aydın / Efeler merkezli danışmanlık hizmeti; kaygı, stres ve ilişki
+            temalarında güvenli ve etik bir süreç hedefler. Online seanslar ile
+            Aydın genelinde erişilebilirlik sağlanır.
           </p>
         </div>
 

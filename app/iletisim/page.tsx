@@ -1,9 +1,26 @@
+import type { Metadata } from "next";
 import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 
 import { DeferredIframe } from "@/components/deferred-iframe";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getContact } from "@/lib/content";
+
+export const metadata: Metadata = {
+  title: "İletişim | Aydın / Efeler Psikolog",
+  description:
+    "Aydın / Efeler’de psikolojik danışmanlık için iletişim bilgileri. WhatsApp, telefon ve e‑posta üzerinden ulaşabilirsiniz.",
+  openGraph: {
+    title: "İletişim | Aydın / Efeler Psikolog",
+    description:
+      "Aydın / Efeler’de psikolojik danışmanlık için iletişim bilgileri. WhatsApp, telefon ve e‑posta üzerinden ulaşabilirsiniz."
+  },
+  twitter: {
+    title: "İletişim | Aydın / Efeler Psikolog",
+    description:
+      "Aydın / Efeler’de psikolojik danışmanlık için iletişim bilgileri. WhatsApp, telefon ve e‑posta üzerinden ulaşabilirsiniz."
+  }
+};
 
 export default function IletisimPage() {
   const contact = getContact();

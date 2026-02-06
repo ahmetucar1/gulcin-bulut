@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 
 import { BlogList } from "@/components/blog-list";
@@ -7,6 +8,22 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { getBlogPosts, getPodcast, getSocial } from "@/lib/content";
 
 export const revalidate = 120;
+
+export const metadata: Metadata = {
+  title: "İçerikler | Aydın / Efeler Psikolog",
+  description:
+    "Aydın / Efeler’de psikoloji notları, podcast bölümleri ve güncel içerikler. Psikolog Gülçin Bulut içerikleri.",
+  openGraph: {
+    title: "İçerikler | Aydın / Efeler Psikolog",
+    description:
+      "Aydın / Efeler’de psikoloji notları, podcast bölümleri ve güncel içerikler. Psikolog Gülçin Bulut içerikleri."
+  },
+  twitter: {
+    title: "İçerikler | Aydın / Efeler Psikolog",
+    description:
+      "Aydın / Efeler’de psikoloji notları, podcast bölümleri ve güncel içerikler. Psikolog Gülçin Bulut içerikleri."
+  }
+};
 
 export default async function IceriklerPage() {
   const blogPosts = await getBlogPosts();

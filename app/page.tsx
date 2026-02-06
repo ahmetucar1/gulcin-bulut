@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Instagram, Mail, MapPin, MessageCircle, Music2 } from "lucide-react";
@@ -12,6 +13,22 @@ import { SpotifyEmbed } from "@/components/spotify-embed";
 import { getAboutExcerpt, getContact, getPodcast, getSocial } from "@/lib/content";
 
 export const revalidate = 120;
+
+export const metadata: Metadata = {
+  title: "Aydın / Efeler Psikolog | Psikolog Gülçin Bulut",
+  description:
+    "Aydın / Efeler’de online ve yüz yüze psikolojik danışmanlık. Kaygı, stres ve ilişki temalarında güvenli bir danışmanlık süreci.",
+  openGraph: {
+    title: "Aydın / Efeler Psikolog | Psikolog Gülçin Bulut",
+    description:
+      "Aydın / Efeler’de online ve yüz yüze psikolojik danışmanlık. Kaygı, stres ve ilişki temalarında güvenli bir danışmanlık süreci."
+  },
+  twitter: {
+    title: "Aydın / Efeler Psikolog | Psikolog Gülçin Bulut",
+    description:
+      "Aydın / Efeler’de online ve yüz yüze psikolojik danışmanlık. Kaygı, stres ve ilişki temalarında güvenli bir danışmanlık süreci."
+  }
+};
 
 const areas = [
   "Kaygı ve Endişe",

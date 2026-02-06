@@ -1,6 +1,23 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "Randevu | Aydın / Efeler Psikolog",
+  description:
+    "Aydın / Efeler’de psikolojik danışmanlık için online randevu planlayın. Uygun gün ve saatleri görüntüleyin.",
+  openGraph: {
+    title: "Randevu | Aydın / Efeler Psikolog",
+    description:
+      "Aydın / Efeler’de psikolojik danışmanlık için online randevu planlayın. Uygun gün ve saatleri görüntüleyin."
+  },
+  twitter: {
+    title: "Randevu | Aydın / Efeler Psikolog",
+    description:
+      "Aydın / Efeler’de psikolojik danışmanlık için online randevu planlayın. Uygun gün ve saatleri görüntüleyin."
+  }
+};
 
 export default function RandevuPage() {
   const bookingUrl = process.env.NEXT_PUBLIC_GOOGLE_BOOKING_URL;
