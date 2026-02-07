@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
 
 import { Button } from "@/components/ui/button";
 
@@ -48,39 +47,6 @@ export default function RandevuPage() {
                 loading="lazy"
               />
             </div>
-            <link
-              rel="stylesheet"
-              href="https://calendar.google.com/calendar/scheduling-button-script.css"
-            />
-            <div className="rounded-3xl border border-border/70 bg-white/70 p-10 text-center shadow-soft">
-              <p className="text-lg font-medium">
-                Eğer iframe açılmazsa aşağıdaki butonu kullanın.
-              </p>
-              <p className="mt-2 text-sm text-foreground/70">
-                Google Calendar üzerinden uygun gün ve saatleri görüntüleyip
-                randevu oluşturabilirsiniz.
-              </p>
-              <div id="gcal-scheduling-button" className="mt-6 flex justify-center" />
-            </div>
-            <Script
-              src="https://calendar.google.com/calendar/scheduling-button-script.js"
-              strategy="afterInteractive"
-            />
-            <Script id="gcal-scheduling-init" strategy="afterInteractive">
-              {`
-                window.addEventListener('load', function () {
-                  var target = document.getElementById('gcal-scheduling-button');
-                  if (window.calendar && window.calendar.schedulingButton && target) {
-                    window.calendar.schedulingButton.load({
-                      url: '${bookingUrl}',
-                      color: '#039BE5',
-                      label: 'Randevu oluşturun',
-                      target: target,
-                    });
-                  }
-                });
-              `}
-            </Script>
             <Button asChild variant="outline">
               <a href={bookingUrl} target="_blank" rel="noreferrer">
                 Yeni sekmede aç
