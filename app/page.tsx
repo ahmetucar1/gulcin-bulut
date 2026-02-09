@@ -160,7 +160,7 @@ export default async function HomePage() {
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-sm text-foreground/75">
-                Yoğun tempoya uyum sağlayan esnek saatler, gizlilik ve rahat bir
+                Yoğun tempoya uyum sağlayan esnek saatler, güvenli ve rahat bir
                 ortam.
               </p>
               <div className="relative overflow-hidden rounded-2xl bg-white/40 p-3 shadow-soft">
