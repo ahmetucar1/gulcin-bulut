@@ -22,7 +22,11 @@ async function translateChunk(
 
   for (const endpoint of DEFAULT_ENDPOINTS) {
     try {
-      const res = await fetch(endpoint, {
+      const requestUrl =
+        TRANSLATE_API_KEY && endpoint.includes("googleapis.com")
+          ? `${endpoint}${endpoint.includes("?") ? "&" : "?"}key=${TRANSLATE_API_KEY}`
+          : endpoint;
+      const res = await fetch(requestUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -33,13 +37,20 @@ async function translateChunk(
           source,
           target,
           format: "text",
-          ...(TRANSLATE_API_KEY ? { api_key: TRANSLATE_API_KEY } : {})
+          ...(TRANSLATE_API_KEY && !endpoint.includes("googleapis.com")
+            ? { api_key: TRANSLATE_API_KEY }
+            : {})
         })
       });
 
       if (!res.ok) continue;
-      const data = (await res.json()) as { translatedText?: string };
-      const translated = data?.translatedText?.trim();
+      const data = (await res.json()) as {
+        translatedText?: string;
+        data?: { translations?: { translatedText?: string }[] };
+      };
+      const translated =
+        data?.translatedText?.trim() ||
+        data?.data?.translations?.[0]?.translatedText?.trim();
       if (translated && !isSameText(translated, trimmed)) {
         return translated;
       }
