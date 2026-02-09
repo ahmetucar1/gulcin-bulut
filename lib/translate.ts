@@ -8,6 +8,10 @@ const DEFAULT_ENDPOINTS = [
 
 const MAX_CHUNK = 3500;
 
+function isSameText(a: string, b: string) {
+  return a.trim().toLowerCase() === b.trim().toLowerCase();
+}
+
 async function translateChunk(
   text: string,
   source = "tr",
@@ -35,8 +39,9 @@ async function translateChunk(
 
       if (!res.ok) continue;
       const data = (await res.json()) as { translatedText?: string };
-      if (data?.translatedText?.trim()) {
-        return data.translatedText.trim();
+      const translated = data?.translatedText?.trim();
+      if (translated && !isSameText(translated, trimmed)) {
+        return translated;
       }
     } catch {
       continue;
@@ -57,7 +62,30 @@ async function translateChunk(
       const translated = Array.isArray(data?.[0])
         ? data[0].map((part: any) => part?.[0]).join("")
         : "";
-      if (translated?.trim()) return translated.trim();
+      if (translated?.trim() && !isSameText(translated, trimmed)) {
+        return translated.trim();
+      }
+    }
+  } catch {
+    // ignore
+  }
+
+  try {
+    const memoryUrl =
+      "https://api.mymemory.translated.net/get" +
+      `?q=${encodeURIComponent(trimmed)}` +
+      `&langpair=${encodeURIComponent(source)}|${encodeURIComponent(target)}`;
+    const res = await fetch(memoryUrl, {
+      headers: { "User-Agent": "psikologgulcin.com" }
+    });
+    if (res.ok) {
+      const data = (await res.json()) as {
+        responseData?: { translatedText?: string };
+      };
+      const translated = data?.responseData?.translatedText?.trim();
+      if (translated && !isSameText(translated, trimmed)) {
+        return translated;
+      }
     }
   } catch {
     // ignore

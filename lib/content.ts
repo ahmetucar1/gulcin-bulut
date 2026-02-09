@@ -286,6 +286,12 @@ async function ensureEnglishPost(post: {
     ? contentEn.replace(/\s+/g, " ").slice(0, 180)
     : "";
 
+  const translationFailed =
+    !titleEn ||
+    !contentEn ||
+    titleEn.trim().toLowerCase() === post.title.trim().toLowerCase() ||
+    contentEn.trim().toLowerCase() === post.content.trim().toLowerCase();
+
   const next = {
     ...post,
     titleEn: titleEn || post.titleEn,
@@ -301,7 +307,8 @@ async function ensureEnglishPost(post: {
     adminDb &&
     next.titleEn &&
     next.contentEn &&
-    (!titleSame || !contentSame)
+    (!titleSame || !contentSame) &&
+    !translationFailed
   ) {
     await adminDb.collection("blogPosts").doc(post.slug).set(
       {
