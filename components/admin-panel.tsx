@@ -470,6 +470,9 @@ export function AdminPanel({
             Düzenleme modundasınız. URL aynı kalır, içerik güncellenir.
           </p>
         ) : null}
+        <p className="mt-2 text-sm text-foreground/70">
+          İngilizce alanlar boş bırakılırsa otomatik çeviri denenir.
+        </p>
         <div className="mt-6 grid gap-4">
           <input
             value={blogTitle}

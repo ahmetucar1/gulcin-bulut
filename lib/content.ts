@@ -3,6 +3,7 @@ import path from "path";
 import { unstable_cache } from "next/cache";
 
 import { adminDb } from "@/lib/firebase-admin";
+import { translateText } from "@/lib/translate";
 
 const contentDir = path.join(process.cwd(), "content");
 
@@ -261,11 +262,57 @@ export async function getPodcast() {
   };
 }
 
-export async function getBlogPosts() {
+async function ensureEnglishPost(post: {
+  slug: string;
+  title: string;
+  titleEn?: string;
+  excerpt: string;
+  excerptEn?: string;
+  content: string;
+  contentEn?: string;
+}) {
+  if (post.titleEn && post.contentEn) return post;
+
+  const titleEn = post.titleEn ?? (await translateText(post.title));
+  const contentEn = post.contentEn ?? (await translateText(post.content));
+  const excerptEn = contentEn
+    ? contentEn.replace(/\s+/g, " ").slice(0, 180)
+    : "";
+
+  const next = {
+    ...post,
+    titleEn: titleEn || post.titleEn,
+    contentEn: contentEn || post.contentEn,
+    excerptEn: contentEn
+      ? excerptEn.length < contentEn.length
+        ? `${excerptEn}…`
+        : excerptEn
+      : post.excerptEn
+  };
+
+  if (adminDb && next.titleEn && next.contentEn) {
+    await adminDb.collection("blogPosts").doc(post.slug).set(
+      {
+        titleEn: next.titleEn,
+        contentEn: next.contentEn,
+        excerptEn: next.excerptEn
+      },
+      { merge: true }
+    );
+  }
+
+  return next;
+}
+
+export async function getBlogPosts(locale: "tr" | "en" = "tr") {
   const adminEnabled = process.env.FIREBASE_ADMIN_ENABLED === "true";
   if (adminEnabled && adminDb) {
     try {
-      return await getBlogPostsCached();
+      const posts = await getBlogPostsCached();
+      if (locale === "en") {
+        return await Promise.all(posts.map((post) => ensureEnglishPost(post)));
+      }
+      return posts;
     } catch (error) {
       console.warn("Firebase blog verisi okunamadı, yerel içeriğe dönülüyor.", error);
     }
@@ -291,10 +338,14 @@ export async function getBlogPosts() {
     }[];
   };
 
-  return data.posts ?? [];
+  const posts = data.posts ?? [];
+  if (locale === "en") {
+    return await Promise.all(posts.map((post) => ensureEnglishPost(post)));
+  }
+  return posts;
 }
 
-export async function getBlogPost(slug: string) {
+export async function getBlogPost(slug: string, locale: "tr" | "en" = "tr") {
   const adminEnabled = process.env.FIREBASE_ADMIN_ENABLED === "true";
   if (adminEnabled && adminDb) {
     try {
@@ -304,7 +355,9 @@ export async function getBlogPost(slug: string) {
         { revalidate: 120, tags: ["blog"] }
       );
       const data = await cached();
-      if (data) return data;
+      if (data) {
+        return locale === "en" ? await ensureEnglishPost(data) : data;
+      }
     } catch (error) {
       console.warn("Firebase blog verisi okunamadı, yerel içeriğe dönülüyor.", error);
     }
@@ -315,6 +368,6 @@ export async function getBlogPost(slug: string) {
     return undefined;
   }
 
-  const posts = await getBlogPosts();
+  const posts = await getBlogPosts(locale);
   return posts.find((post) => post.slug === slug);
 }

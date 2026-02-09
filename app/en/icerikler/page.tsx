@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 };
 
 export default async function IceriklerPageEn() {
-  const blogPosts = await getBlogPosts();
+  const blogPosts = await getBlogPosts("en");
   const social = await getSocial();
   const podcast = await getPodcast();
   const podcastEmbeds = podcast.embeds ?? [];
