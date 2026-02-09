@@ -6,7 +6,9 @@ const DEFAULT_ENDPOINTS = [
   "https://libretranslate.com/translate"
 ].filter(Boolean) as string[];
 
-export async function translateText(
+const MAX_CHUNK = 3500;
+
+async function translateChunk(
   text: string,
   source = "tr",
   target = "en"
@@ -41,5 +43,59 @@ export async function translateText(
     }
   }
 
+  try {
+    const googleUrl =
+      "https://translate.googleapis.com/translate_a/single" +
+      `?client=gtx&sl=${encodeURIComponent(source)}` +
+      `&tl=${encodeURIComponent(target)}` +
+      `&dt=t&q=${encodeURIComponent(trimmed)}`;
+    const res = await fetch(googleUrl, {
+      headers: { "User-Agent": "psikologgulcin.com" }
+    });
+    if (res.ok) {
+      const data = (await res.json()) as any;
+      const translated = Array.isArray(data?.[0])
+        ? data[0].map((part: any) => part?.[0]).join("")
+        : "";
+      if (translated?.trim()) return translated.trim();
+    }
+  } catch {
+    // ignore
+  }
+
   return text;
+}
+
+export async function translateText(
+  text: string,
+  source = "tr",
+  target = "en"
+) {
+  const trimmed = text.trim();
+  if (!trimmed) return "";
+
+  if (trimmed.length <= MAX_CHUNK) {
+    return translateChunk(trimmed, source, target);
+  }
+
+  const blocks = trimmed.split(/\n\n+/);
+  const chunks: string[] = [];
+  let current = "";
+
+  for (const block of blocks) {
+    const next = current ? `${current}\n\n${block}` : block;
+    if (next.length > MAX_CHUNK) {
+      if (current) chunks.push(current);
+      current = block;
+    } else {
+      current = next;
+    }
+  }
+  if (current) chunks.push(current);
+
+  const translatedChunks: string[] = [];
+  for (const chunk of chunks) {
+    translatedChunks.push(await translateChunk(chunk, source, target));
+  }
+  return translatedChunks.join("\n\n");
 }

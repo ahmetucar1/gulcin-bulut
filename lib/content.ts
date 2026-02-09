@@ -271,10 +271,17 @@ async function ensureEnglishPost(post: {
   content: string;
   contentEn?: string;
 }) {
-  if (post.titleEn && post.contentEn) return post;
+  const titleSame =
+    post.titleEn?.trim() &&
+    post.titleEn.trim().toLowerCase() === post.title.trim().toLowerCase();
+  const contentSame =
+    post.contentEn?.trim() &&
+    post.contentEn.trim().toLowerCase() === post.content.trim().toLowerCase();
+  const needsTranslate = !post.titleEn || !post.contentEn || titleSame || contentSame;
+  if (!needsTranslate) return post;
 
-  const titleEn = post.titleEn ?? (await translateText(post.title));
-  const contentEn = post.contentEn ?? (await translateText(post.content));
+  const titleEn = await translateText(post.title);
+  const contentEn = await translateText(post.content);
   const excerptEn = contentEn
     ? contentEn.replace(/\s+/g, " ").slice(0, 180)
     : "";
@@ -290,7 +297,12 @@ async function ensureEnglishPost(post: {
       : post.excerptEn
   };
 
-  if (adminDb && next.titleEn && next.contentEn) {
+  if (
+    adminDb &&
+    next.titleEn &&
+    next.contentEn &&
+    (!titleSame || !contentSame)
+  ) {
     await adminDb.collection("blogPosts").doc(post.slug).set(
       {
         titleEn: next.titleEn,
