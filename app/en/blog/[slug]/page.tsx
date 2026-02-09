@@ -31,7 +31,7 @@ export default async function BlogPostPageEn({
               <div className="relative h-24 w-32 overflow-hidden rounded-2xl bg-white/70 shadow-soft md:h-28 md:w-40">
                 <Image
                   src={post.image}
-                  alt={post.title}
+                  alt={post.titleEn ?? post.title}
                   fill
                   sizes="160px"
                   className="object-cover"
@@ -39,14 +39,14 @@ export default async function BlogPostPageEn({
               </div>
             ) : null}
             <div className="space-y-2">
-              <h1 className="text-2xl md:text-3xl">{post.title}</h1>
+              <h1 className="text-2xl md:text-3xl">{post.titleEn ?? post.title}</h1>
             </div>
           </div>
         </div>
 
         <div className="rounded-3xl border border-border/70 bg-white/70 p-8 shadow-soft">
           <div className="richtext">
-            <ReactMarkdown>{post.content}</ReactMarkdown>
+            <ReactMarkdown>{post.contentEn ?? post.content}</ReactMarkdown>
           </div>
         </div>
 

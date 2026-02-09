@@ -136,8 +136,11 @@ async function getBlogPostsFromFirestore() {
   return snapshot.docs.map((doc) => doc.data()) as {
     slug: string;
     title: string;
+    titleEn?: string;
     excerpt: string;
+    excerptEn?: string;
     content: string;
+    contentEn?: string;
     image: string;
     date: string;
   }[];
@@ -150,8 +153,11 @@ async function getBlogPostFromFirestore(slug: string) {
   return snapshot.data() as {
     slug: string;
     title: string;
+    titleEn?: string;
     excerpt: string;
+    excerptEn?: string;
     content: string;
+    contentEn?: string;
     image: string;
     date: string;
   };
@@ -275,8 +281,11 @@ export async function getBlogPosts() {
     posts: {
       slug: string;
       title: string;
+      titleEn?: string;
       excerpt: string;
+      excerptEn?: string;
       content: string;
+      contentEn?: string;
       image: string;
       date: string;
     }[];

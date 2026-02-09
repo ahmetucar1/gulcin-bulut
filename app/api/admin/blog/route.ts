@@ -39,6 +39,8 @@ export async function POST(req: Request) {
   const formData = await req.formData();
   const title = String(formData.get("title") || "").trim();
   const content = String(formData.get("content") || "").trim();
+  const titleEnRaw = String(formData.get("titleEn") || "").trim();
+  const contentEnRaw = String(formData.get("contentEn") || "").trim();
   const image = formData.get("image") as File | null;
 
   if (!title || !content || !image) {
@@ -57,11 +59,20 @@ export async function POST(req: Request) {
 
   const buffer = Buffer.from(await image.arrayBuffer());
   const excerpt = content.replace(/\s+/g, " ").slice(0, 180);
+  const titleEn = titleEnRaw || (contentEnRaw ? title : "");
+  const contentEn = contentEnRaw;
+  const excerptEn = contentEn
+    ? contentEn.replace(/\s+/g, " ").slice(0, 180)
+    : "";
   const buildPost = (slug: string, imageUrl: string, storagePath?: string) => ({
     slug,
     title,
+    titleEn: titleEn || undefined,
     excerpt: excerpt.length < content.length ? `${excerpt}…` : excerpt,
+    excerptEn:
+      contentEn && excerptEn.length < contentEn.length ? `${excerptEn}…` : contentEn ? excerptEn : undefined,
     content,
+    contentEn: contentEn || undefined,
     image: imageUrl,
     date: new Date().toISOString(),
     ...(storagePath ? { storagePath } : {})

@@ -48,6 +48,8 @@ export async function PATCH(
   const formData = await req.formData();
   const title = String(formData.get("title") || "").trim();
   const content = String(formData.get("content") || "").trim();
+  const titleEnRaw = String(formData.get("titleEn") || "").trim();
+  const contentEnRaw = String(formData.get("contentEn") || "").trim();
   const image = formData.get("image") as File | null;
 
   if (!title || !content) {
@@ -65,6 +67,14 @@ export async function PATCH(
     excerpt: excerpt.length < content.length ? `${excerpt}…` : excerpt,
     date: new Date().toISOString()
   };
+  const updateEn: Record<string, string | undefined> = {};
+  if (titleEnRaw) updateEn.titleEn = titleEnRaw;
+  if (contentEnRaw) {
+    const excerptEn = contentEnRaw.replace(/\s+/g, " ").slice(0, 180);
+    updateEn.contentEn = contentEnRaw;
+    updateEn.excerptEn =
+      excerptEn.length < contentEnRaw.length ? `${excerptEn}…` : excerptEn;
+  }
 
   const adminEnabled = process.env.FIREBASE_ADMIN_ENABLED === "true";
 
@@ -95,7 +105,7 @@ export async function PATCH(
       imageUrl = `/images/blog/${slug}${ext}`;
     }
 
-    posts[index] = { ...posts[index], ...updateBase, image: imageUrl };
+    posts[index] = { ...posts[index], ...updateBase, ...updateEn, image: imageUrl };
     fs.writeFileSync(blogFile, JSON.stringify({ posts }, null, 2));
     return NextResponse.json({ posts });
   }
@@ -152,6 +162,7 @@ export async function PATCH(
       {
         ...existing,
         ...updateBase,
+        ...updateEn,
         ...(imageUrl ? { image: imageUrl } : {}),
         ...(storagePath ? { storagePath } : {})
       },

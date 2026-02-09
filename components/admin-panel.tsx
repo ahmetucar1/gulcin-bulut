@@ -27,8 +27,11 @@ type PodcastData = {
 type BlogPost = {
   slug: string;
   title: string;
+  titleEn?: string;
   excerpt: string;
+  excerptEn?: string;
   content: string;
+  contentEn?: string;
   image: string;
   date: string;
 };
@@ -71,6 +74,8 @@ export function AdminPanel({
 
   const [blogTitle, setBlogTitle] = useState("");
   const [blogContent, setBlogContent] = useState("");
+  const [blogTitleEn, setBlogTitleEn] = useState("");
+  const [blogContentEn, setBlogContentEn] = useState("");
   const [blogImage, setBlogImage] = useState<File | null>(null);
   const [status, setStatus] = useState<string | null>(null);
   const router = useRouter();
@@ -238,6 +243,8 @@ export function AdminPanel({
     const formData = new FormData();
     formData.append("title", blogTitle);
     formData.append("content", blogContent);
+    formData.append("titleEn", blogTitleEn);
+    formData.append("contentEn", blogContentEn);
     if (blogImage) formData.append("image", blogImage);
 
     const endpoint = editingSlug ? `/api/admin/blog/${editingSlug}` : "/api/admin/blog";
@@ -257,6 +264,8 @@ export function AdminPanel({
       }
       setBlogTitle("");
       setBlogContent("");
+      setBlogTitleEn("");
+      setBlogContentEn("");
       setBlogImage(null);
       setEditingSlug(null);
       setEditingImagePreview(null);
@@ -278,6 +287,8 @@ export function AdminPanel({
     setEditingSlug(post.slug);
     setBlogTitle(post.title);
     setBlogContent(post.content);
+    setBlogTitleEn(post.titleEn ?? "");
+    setBlogContentEn(post.contentEn ?? "");
     setBlogImage(null);
     setEditingImagePreview(post.image);
   };
@@ -466,10 +477,23 @@ export function AdminPanel({
             placeholder="Başlık"
             className="w-full rounded-2xl border border-border/70 bg-white/80 px-4 py-3 text-sm"
           />
+          <input
+            value={blogTitleEn}
+            onChange={(event) => setBlogTitleEn(event.target.value)}
+            placeholder="Başlık (EN)"
+            className="w-full rounded-2xl border border-border/70 bg-white/80 px-4 py-3 text-sm"
+          />
           <textarea
             value={blogContent}
             onChange={(event) => setBlogContent(event.target.value)}
             placeholder="Yazı"
+            rows={8}
+            className="w-full rounded-2xl border border-border/70 bg-white/80 px-4 py-3 text-sm"
+          />
+          <textarea
+            value={blogContentEn}
+            onChange={(event) => setBlogContentEn(event.target.value)}
+            placeholder="Yazı (EN)"
             rows={8}
             className="w-full rounded-2xl border border-border/70 bg-white/80 px-4 py-3 text-sm"
           />
