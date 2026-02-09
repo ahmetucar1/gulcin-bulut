@@ -1,10 +1,10 @@
-\"use client\";
+"use client";
 
-import Image from \"next/image\";
-import Link from \"next/link\";
-import { usePathname } from \"next/navigation\";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-import { siteConfig } from \"@/lib/site\";
+import { siteConfig } from "@/lib/site";
 
 type ContactInfo = {
   phone: string;
@@ -17,32 +17,32 @@ type ContactInfo = {
 };
 
 export function SiteFooter({ contact }: { contact: ContactInfo }) {
-  const instagramUrl = \"https://www.instagram.com/psikologgulcinbulut/\";
+  const instagramUrl = "https://www.instagram.com/psikologgulcinbulut/";
   const pathname = usePathname();
-  const isEnglish = pathname?.startsWith(\"/en\");
-  const basePath = isEnglish ? \"/en\" : \"\";
+  const isEnglish = pathname?.startsWith("/en");
+  const basePath = isEnglish ? "/en" : "";
   const labels = isEnglish
     ? {
         summary:
-          \"Online and in-person psychological counseling. A safe, compassionate and ethical process.\",
-        contact: \"Contact\",
-        whatsapp: \"Message on WhatsApp\",
-        gmb: \"Google Business Profile\",
-        links: \"Links\",
-        kvkk: \"Data Protection Notice (KVKK)\",
-        privacy: \"Privacy Policy\",
-        ethics: \"Counseling is conducted in line with ethical principles.\"
+          "Online and in-person psychological counseling. A safe, compassionate and ethical process.",
+        contact: "Contact",
+        whatsapp: "Message on WhatsApp",
+        gmb: "Google Business Profile",
+        links: "Links",
+        kvkk: "Data Protection Notice (KVKK)",
+        privacy: "Privacy Policy",
+        ethics: "Counseling is conducted in line with ethical principles."
       }
     : {
         summary:
-          \"Online ve yüz yüze psikolojik danışmanlık. Güvenli, şefkatli ve etik bir süreç için yanınızdayım.\",
-        contact: \"İletişim\",
-        whatsapp: \"WhatsApp üzerinden yaz\",
-        gmb: \"Google İşletme Profili\",
-        links: \"Bağlantılar\",
-        kvkk: \"KVKK Aydınlatma Metni\",
-        privacy: \"Gizlilik Politikası\",
-        ethics: \"Danışmanlık süreci etik ilkelere uygun yürütülür.\"
+          "Online ve yüz yüze psikolojik danışmanlık. Güvenli, şefkatli ve etik bir süreç için yanınızdayım.",
+        contact: "İletişim",
+        whatsapp: "WhatsApp üzerinden yaz",
+        gmb: "Google İşletme Profili",
+        links: "Bağlantılar",
+        kvkk: "KVKK Aydınlatma Metni",
+        privacy: "Gizlilik Politikası",
+        ethics: "Danışmanlık süreci etik ilkelere uygun yürütülür."
       };
 
   return (
