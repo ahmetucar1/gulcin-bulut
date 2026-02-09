@@ -30,7 +30,7 @@ export function InstagramEmbed({
 
   return (
     <div
-      className={`relative h-[423px] overflow-hidden rounded-2xl border border-border/70 bg-white/70 shadow-soft ${
+      className={`relative h-[440px] overflow-hidden rounded-2xl border border-border/70 bg-white/70 shadow-soft ${
         className ?? ""
       }`}
     >
@@ -39,7 +39,7 @@ export function InstagramEmbed({
         title="Instagram gönderisi"
         allow="encrypted-media; clipboard-write; picture-in-picture"
         wrapperClassName="h-full w-full"
-        iframeClassName="block h-[703px] w-full -mt-24 pointer-events-none"
+        iframeClassName="block h-[720px] w-full -mt-24 pointer-events-none"
         rootMargin="800px"
       />
       <a
