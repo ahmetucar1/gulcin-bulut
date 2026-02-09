@@ -14,3 +14,11 @@ export const navigation = [
   { label: "İçerikler", href: "/icerikler" },
   { label: "İletişim", href: "/iletisim" }
 ];
+
+export const navigationEn = [
+  { label: "Home", href: "/en" },
+  { label: "About", href: "/en/hakkinda" },
+  { label: "Services", href: "/en/hizmetler" },
+  { label: "Content", href: "/en/icerikler" },
+  { label: "Contact", href: "/en/iletisim" }
+];

@@ -4,19 +4,34 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { navigation, siteConfig } from "@/lib/site";
+import { navigation, navigationEn, siteConfig } from "@/lib/site";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
   const pathname = usePathname();
+  const isEnglish = pathname?.startsWith("/en");
+  const currentLang = isEnglish ? "EN" : "TR";
+  const navItems = isEnglish ? navigationEn : navigation;
+  const basePath = isEnglish ? "/en" : "";
+  const trimmedPath = pathname?.replace(/^\/en/, "") || "/";
+  const trPath = pathname === "/aydin-psikolog" ? "/" : pathname;
+  const alternatePath = isEnglish
+    ? trimmedPath === "" ? "/" : trimmedPath
+    : `/en${trPath === "/" ? "" : trPath}`;
+  const appointmentHref = `${basePath}/randevu`;
+  const appointmentLabel = isEnglish ? "Book Appointment" : "Randevu Al";
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-[#fef6e1]/70 backdrop-blur-2xl shadow-[0_18px_50px_-28px_rgba(45,35,25,0.35)]">
       <div className="container flex h-20 items-center justify-between gap-6">
-        <Link href="/" className="flex items-center gap-4 font-serif text-xl md:text-2xl">
+        <Link
+          href={basePath || "/"}
+          className="flex items-center gap-4 font-serif text-xl md:text-2xl"
+        >
           <div className="relative h-16 w-16 overflow-hidden rounded-full bg-[#fef6e1]">
             <Image
               src="/images/brand/logo-512-2.png"
@@ -30,7 +45,7 @@ export function SiteHeader() {
           <span>{siteConfig.name}</span>
         </Link>
         <nav className="hidden items-center gap-6 text-sm md:flex">
-          {navigation.map((item) => (
+          {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -44,10 +59,32 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
+          <div className="relative">
+            <button
+              type="button"
+              aria-label="Language"
+              onClick={() => setLangOpen((prev) => !prev)}
+              className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-white/80 px-3 py-1.5 text-xs font-medium text-foreground/80 transition hover:text-foreground"
+            >
+              {currentLang}
+              <ChevronDown className="h-3.5 w-3.5" />
+            </button>
+            {langOpen ? (
+              <div className="absolute right-0 mt-2 rounded-xl border border-border/70 bg-white/95 p-2 shadow-soft">
+                <Link
+                  href={alternatePath}
+                  onClick={() => setLangOpen(false)}
+                  className="block rounded-lg px-3 py-1.5 text-xs font-medium text-foreground/80 transition hover:text-foreground"
+                >
+                  {isEnglish ? "TR" : "EN"}
+                </Link>
+              </div>
+            ) : null}
+          </div>
         </nav>
         <div className="hidden md:block">
           <Button asChild size="sm">
-            <Link href="/randevu">Randevu Al</Link>
+            <Link href={appointmentHref}>{appointmentLabel}</Link>
           </Button>
         </div>
         <div className="flex items-center gap-3 md:hidden">
@@ -65,7 +102,7 @@ export function SiteHeader() {
       {open ? (
         <div className="border-t border-border/70 bg-background/95 md:hidden">
           <div className="container grid gap-4 py-4 text-sm">
-            {navigation.map((item) => (
+            {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -80,9 +117,19 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
+            <Link
+              href={alternatePath}
+              onClick={() => {
+                setLangOpen(false);
+                setOpen(false);
+              }}
+              className="rounded-2xl border border-border/70 bg-white/80 px-4 py-2 text-xs font-medium text-foreground/80 transition hover:text-foreground"
+            >
+              {isEnglish ? "TR" : "EN"}
+            </Link>
             <Button asChild size="sm" className="w-full">
-              <Link href="/randevu" onClick={() => setOpen(false)}>
-                Randevu Al
+              <Link href={appointmentHref} onClick={() => setOpen(false)}>
+                {appointmentLabel}
               </Link>
             </Button>
           </div>

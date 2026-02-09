@@ -1,12 +1,49 @@
-import Image from "next/image";
-import Link from "next/link";
+\"use client\";
 
-import { getContact } from "@/lib/content";
-import { siteConfig } from "@/lib/site";
+import Image from \"next/image\";
+import Link from \"next/link\";
+import { usePathname } from \"next/navigation\";
 
-export async function SiteFooter() {
-  const contact = getContact();
-  const instagramUrl = "https://www.instagram.com/psikologgulcinbulut/";
+import { siteConfig } from \"@/lib/site\";
+
+type ContactInfo = {
+  phone: string;
+  phoneHref: string;
+  email: string;
+  emailHref: string;
+  address: string;
+  mapUrl: string;
+  googleBusinessUrl?: string;
+};
+
+export function SiteFooter({ contact }: { contact: ContactInfo }) {
+  const instagramUrl = \"https://www.instagram.com/psikologgulcinbulut/\";
+  const pathname = usePathname();
+  const isEnglish = pathname?.startsWith(\"/en\");
+  const basePath = isEnglish ? \"/en\" : \"\";
+  const labels = isEnglish
+    ? {
+        summary:
+          \"Online and in-person psychological counseling. A safe, compassionate and ethical process.\",
+        contact: \"Contact\",
+        whatsapp: \"Message on WhatsApp\",
+        gmb: \"Google Business Profile\",
+        links: \"Links\",
+        kvkk: \"Data Protection Notice (KVKK)\",
+        privacy: \"Privacy Policy\",
+        ethics: \"Counseling is conducted in line with ethical principles.\"
+      }
+    : {
+        summary:
+          \"Online ve yüz yüze psikolojik danışmanlık. Güvenli, şefkatli ve etik bir süreç için yanınızdayım.\",
+        contact: \"İletişim\",
+        whatsapp: \"WhatsApp üzerinden yaz\",
+        gmb: \"Google İşletme Profili\",
+        links: \"Bağlantılar\",
+        kvkk: \"KVKK Aydınlatma Metni\",
+        privacy: \"Gizlilik Politikası\",
+        ethics: \"Danışmanlık süreci etik ilkelere uygun yürütülür.\"
+      };
 
   return (
     <footer className="border-t border-border/70 bg-background">
@@ -32,13 +69,10 @@ export async function SiteFooter() {
             </div>
             <p className="font-serif text-lg">{siteConfig.name}</p>
           </div>
-          <p className="text-sm text-foreground/70">
-            Online ve yüz yüze psikolojik danışmanlık. Güvenli, şefkatli ve
-            etik bir süreç için yanınızdayım.
-          </p>
+          <p className="text-sm text-foreground/70">{labels.summary}</p>
         </div>
         <div className="space-y-3 text-sm text-foreground/80">
-          <p className="font-medium">İletişim</p>
+          <p className="font-medium">{labels.contact}</p>
           <a href={contact.phoneHref} className="block hover:text-foreground">
             {contact.phone}
           </a>
@@ -48,7 +82,7 @@ export async function SiteFooter() {
             target="_blank"
             rel="noreferrer"
           >
-            WhatsApp üzerinden yaz
+            {labels.whatsapp}
           </a>
           {contact.googleBusinessUrl ? (
             <a
@@ -57,7 +91,7 @@ export async function SiteFooter() {
               target="_blank"
               rel="noreferrer"
             >
-              Google İşletme Profili
+              {labels.gmb}
             </a>
           ) : null}
           <a href={contact.emailHref} className="block hover:text-foreground">
@@ -66,12 +100,12 @@ export async function SiteFooter() {
           <span className="block text-foreground/60">{contact.address}</span>
         </div>
         <div className="space-y-3 text-sm text-foreground/80">
-          <p className="font-medium">Bağlantılar</p>
-          <Link href="/kvkk" className="block hover:text-foreground">
-            KVKK Aydınlatma Metni
+          <p className="font-medium">{labels.links}</p>
+          <Link href={`${basePath}/kvkk`} className="block hover:text-foreground">
+            {labels.kvkk}
           </Link>
-          <Link href="/gizlilik" className="block hover:text-foreground">
-            Gizlilik Politikası
+          <Link href={`${basePath}/gizlilik`} className="block hover:text-foreground">
+            {labels.privacy}
           </Link>
           <a
             href={instagramUrl}
@@ -88,7 +122,7 @@ export async function SiteFooter() {
       <div className="border-t border-border/70">
         <div className="container flex flex-col gap-2 py-6 text-xs text-foreground/60 md:flex-row md:items-center md:justify-between">
           <span>© {new Date().getFullYear()} {siteConfig.name}</span>
-          <span>Danışmanlık süreci etik ilkelere uygun yürütülür.</span>
+          <span>{labels.ethics}</span>
         </div>
       </div>
     </footer>

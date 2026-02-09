@@ -12,7 +12,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/randevu",
     "/iletisim",
     "/kvkk",
-    "/gizlilik"
+    "/gizlilik",
+    "/en",
+    "/en/hakkinda",
+    "/en/hizmetler",
+    "/en/icerikler",
+    "/en/randevu",
+    "/en/iletisim",
+    "/en/kvkk",
+    "/en/gizlilik"
   ];
 
   return routes.map((route) => ({

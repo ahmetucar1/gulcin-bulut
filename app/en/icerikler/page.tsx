@@ -1,0 +1,144 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+
+import { BlogList } from "@/components/blog-list";
+import { InstagramEmbed } from "@/components/instagram-embed";
+import { SpotifyEmbed } from "@/components/spotify-embed";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { getBlogPosts, getPodcast, getSocial } from "@/lib/content";
+
+export const revalidate = 120;
+
+export const metadata: Metadata = {
+  title: "Content",
+  description:
+    "Aydin psychologist content: psychology notes, podcast episodes, and updates by Psychologist Gulcin Bulut.",
+  openGraph: {
+    title: "Aydin Psychologist | Content",
+    description:
+      "Aydin psychologist content: psychology notes, podcast episodes, and updates by Psychologist Gulcin Bulut."
+  },
+  twitter: {
+    title: "Aydin Psychologist | Content",
+    description:
+      "Aydin psychologist content: psychology notes, podcast episodes, and updates by Psychologist Gulcin Bulut."
+  }
+};
+
+export default async function IceriklerPageEn() {
+  const blogPosts = await getBlogPosts();
+  const social = await getSocial();
+  const podcast = await getPodcast();
+  const podcastEmbeds = podcast.embeds ?? [];
+
+  return (
+    <div className="section-padding relative overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgb(var(--accent-2)/0.3),transparent_55%),radial-gradient(circle_at_bottom_right,rgb(var(--accent-3)/0.2),transparent_60%)]" />
+      <div className="container relative space-y-14">
+        <div className="space-y-4">
+          <p className="text-sm uppercase tracking-[0.3em] text-foreground/60">
+            Content
+          </p>
+          <h1 className="text-4xl md:text-5xl">Posts and podcast</h1>
+          <p className="text-lg text-foreground/80">
+            Psychology notes, short practices, and podcast episodes.
+          </p>
+        </div>
+
+        <section className="relative">
+          <div className="absolute -inset-4 rounded-[36px] bg-accent-2/40 blur-2xl" />
+          <div className="relative overflow-hidden rounded-[32px] border border-border/70 bg-white/70 shadow-soft">
+            <div className="grid gap-8 p-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+              <div className="relative overflow-hidden rounded-2xl bg-white/40 p-3 shadow-soft">
+                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(30,215,96,0.35),transparent_65%)] blur-2xl" />
+                  <Image
+                    src="/images/dur-bi-konus.png"
+                    alt="Dur Bi Konuşalım podcast cover"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 45vw"
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+              <div className="space-y-4">
+                <p className="text-sm uppercase tracking-[0.3em] text-foreground/60">
+                  Podcast
+                </p>
+                <h2 className="text-3xl md:text-4xl">Dur Bi Konuşalım</h2>
+                <p className="text-lg text-foreground/80">Psychologist Gulcin Bulut</p>
+                <a
+                  href="https://open.spotify.com/show/5Zn7ZXInCvsATtP7Y9XdVI"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition hover:bg-foreground/90"
+                >
+                  Listen on Spotify
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <div className="py-6">
+            <p className="text-sm uppercase tracking-[0.3em] text-foreground/60">
+              Blog
+            </p>
+            <h2 className="py-2 text-3xl md:text-4xl">Blog posts</h2>
+            <p className="py-2 text-sm text-foreground/70">
+              New posts will appear here as they are published.
+            </p>
+          </div>
+          <BlogList posts={blogPosts} locale="en" />
+        </section>
+
+        <section className="space-y-6">
+          <div>
+            <h2 className="py-2 text-2xl md:text-3xl">{podcast.title}</h2>
+            <p className="py-2 text-sm text-foreground/70">
+              New episodes and listening links.
+            </p>
+          </div>
+          {podcastEmbeds.length ? (
+            <div className="grid gap-4 md:grid-cols-3">
+              {podcastEmbeds.map((embedUrl) => (
+                <SpotifyEmbed key={embedUrl} embedUrl={embedUrl} />
+              ))}
+            </div>
+          ) : (
+            <div className="rounded-2xl border border-dashed border-border/70 bg-white/60 p-6 text-sm text-foreground/60">
+              Podcast episodes will be available here soon.
+            </div>
+          )}
+        </section>
+
+        <section className="space-y-6">
+          <Card className="bg-gradient-to-br from-white via-white to-accent-2/40">
+            <CardHeader>
+              <CardTitle>{social.platform}</CardTitle>
+              <CardDescription>Short notes and quick practices.</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid gap-4 md:grid-cols-3">
+                {social.cards.map((card) => (
+                  <InstagramEmbed key={card.url} url={card.url} />
+                ))}
+              </div>
+              {social.profileUrl ? (
+                <a
+                  href={social.profileUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-full border border-border/70 bg-white/80 px-6 py-2 text-sm text-foreground/80 transition hover:text-foreground"
+                >
+                  View profile
+                </a>
+              ) : null}
+            </CardContent>
+          </Card>
+        </section>
+      </div>
+    </div>
+  );
+}

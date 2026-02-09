@@ -10,12 +10,12 @@ function readFile(fileName: string) {
   return fs.readFileSync(path.join(contentDir, fileName), "utf8");
 }
 
-export function getAboutMarkdown() {
-  return readFile("about.md");
+export function getAboutMarkdown(locale: "tr" | "en" = "tr") {
+  return readFile(locale === "en" ? "about.en.md" : "about.md");
 }
 
-export function getAboutExcerpt(maxLength = 260) {
-  const raw = getAboutMarkdown();
+export function getAboutExcerpt(maxLength = 260, locale: "tr" | "en" = "tr") {
+  const raw = getAboutMarkdown(locale);
   const firstParagraph = raw
     .split("\n\n")
     .find((block) => !block.startsWith("#"))

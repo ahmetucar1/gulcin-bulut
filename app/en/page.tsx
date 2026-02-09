@@ -15,75 +15,71 @@ import { getAboutExcerpt, getContact, getPodcast, getSocial } from "@/lib/conten
 export const revalidate = 120;
 
 export const metadata: Metadata = {
-  title: "AYDIN PSİKOLOG",
+  title: "Aydin Psychologist",
   description:
-    "Aydın psikolog arayışında Psikolog Gülçin Bulut ile online ve yüz yüze psikolojik danışmanlık. Aydın psikolog desteği için güvenli bir süreç.",
+    "Looking for an Aydin psychologist? Psychologist Gulcin Bulut offers online and in-person counseling in Aydin.",
   alternates: {
-    canonical: "/aydin-psikolog",
+    canonical: "/en",
     languages: {
       tr: "/aydin-psikolog",
       en: "/en"
     }
   },
   openGraph: {
-    title: "AYDIN PSİKOLOG",
+    title: "Aydin Psychologist | Psychologist Gulcin Bulut",
     description:
-      "Aydın psikolog arayışında Psikolog Gülçin Bulut ile online ve yüz yüze psikolojik danışmanlık. Aydın psikolog desteği için güvenli bir süreç."
+      "Looking for an Aydin psychologist? Psychologist Gulcin Bulut offers online and in-person counseling in Aydin."
   },
   twitter: {
-    title: "AYDIN PSİKOLOG",
+    title: "Aydin Psychologist | Psychologist Gulcin Bulut",
     description:
-      "Aydın psikolog arayışında Psikolog Gülçin Bulut ile online ve yüz yüze psikolojik danışmanlık. Aydın psikolog desteği için güvenli bir süreç."
+      "Looking for an Aydin psychologist? Psychologist Gulcin Bulut offers online and in-person counseling in Aydin."
   }
 };
 
 const areas = [
-  "Kaygı ve Endişe",
-  "Ani Yoğun Endişe Hali",
-  "İlişki Problemleri",
-  "Stres Yönetimi",
-  "Zorlayıcı Yaşam Deneyimleri",
-  "Mutsuzluk ve İsteksizlik",
-  "Cinsel Yaşamla İlgili Zorlanmalar",
-  "Ayrılık Kayıp Yas",
-  "İletişim Sorunları"
+  "Anxiety and Worry",
+  "Sudden Intense Anxiety",
+  "Relationship Difficulties",
+  "Stress Management",
+  "Challenging Life Experiences",
+  "Low Mood and Lack of Motivation",
+  "Difficulties in Sexual Life",
+  "Separation, Loss and Grief",
+  "Communication Problems"
 ];
 
 const faqs = [
   {
-    question: "Seanslar ne kadar sürer?",
-    answer:
-      "Seanslar genellikle 50 dakika sürer. Süre, danışan ihtiyacına göre planlanır."
+    question: "How long is a session?",
+    answer: "Sessions typically last 50 minutes. The duration can be planned based on your needs."
   },
   {
-    question: "Online seans için nelere ihtiyaç var?",
-    answer:
-      "Stabil internet bağlantısı, sessiz bir ortam ve kamera/mikrofonu çalışan bir cihaz yeterlidir."
+    question: "What do I need for an online session?",
+    answer: "A stable internet connection, a quiet space, and a device with camera/microphone are sufficient."
   },
   {
-    question: "Gizlilik nasıl korunuyor?",
-    answer:
-      "Tüm görüşmeler etik kurallar çerçevesinde gizli tutulur. Üçüncü kişilerle paylaşım yapılmaz."
+    question: "How is confidentiality protected?",
+    answer: "All sessions are kept confidential under ethical rules. No information is shared with third parties."
   },
   {
-    question: "Seans sıklığı nasıl belirlenir?",
-    answer:
-      "İlk görüşme sonrası birlikte ihtiyaçları değerlendirir ve sıklığı ortak planlarız."
+    question: "How often are sessions scheduled?",
+    answer: "After the first meeting, we assess needs together and plan the frequency accordingly."
   }
 ];
 
 const transitionMessages = [
-  "Derin bir nefes al.",
-  "Fark et ve yavaşla.",
-  "Zihninde nazikçe dolaş.",
-  "İçine bak.",
-  "Güvende olduğun bir alan.",
-  "Buradasın.",
-  "Devam et."
+  "Take a deep breath.",
+  "Notice and slow down.",
+  "Gently observe your mind.",
+  "Look inward.",
+  "A safe space.",
+  "You are here.",
+  "Keep going."
 ];
 
-export default async function HomePage() {
-  const excerpt = getAboutExcerpt();
+export default async function HomePageEn() {
+  const excerpt = getAboutExcerpt(260, "en");
   const contact = getContact();
   const social = await getSocial();
   const podcast = await getPodcast();
@@ -99,21 +95,21 @@ export default async function HomePage() {
         <div className="container section-padding relative grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <div className="space-y-6 pt-6 md:pt-8">
             <p className="py-1 text-sm uppercase tracking-[0.3em] text-foreground/60">
-              Psikolog Gülçin Bulut
+              Psychologist Gulcin Bulut
             </p>
             <h1 className="py-2 text-4xl font-semibold md:text-5xl lg:text-6xl">
-              Güvenli, sakin ve destekleyici bir danışmanlık alanı.
+              A safe, calm, and supportive counseling space.
             </h1>
             <p className="py-2 text-lg text-foreground/80 md:text-xl">
-              Aydın’da online ve yüz yüze seanslarla; ilişki, stres ve
-              yaşam geçişlerinde birlikte ilerliyoruz.
+              In Aydin, we work together through relationships, stress, and life
+              transitions with online and in-person sessions.
             </p>
             <div className="flex flex-wrap gap-4 py-2">
               <Button asChild size="lg">
-                <Link href="/randevu">Randevu Al</Link>
+                <Link href="/en/randevu">Book Appointment</Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link href="/iletisim">İletişim</Link>
+                <Link href="/en/iletisim">Contact</Link>
               </Button>
             </div>
           </div>
@@ -127,7 +123,7 @@ export default async function HomePage() {
               <div className="relative z-10 aspect-[4/5] w-full p-4">
                 <Image
                   src="/images/IMG_2588.jpeg"
-                  alt="Psikolog Gülçin Bulut"
+                  alt="Psychologist Gulcin Bulut"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
@@ -146,71 +142,70 @@ export default async function HomePage() {
         <div className="container relative space-y-8">
           <div>
             <p className="pb-2 text-sm uppercase tracking-[0.3em] text-foreground/60">
-              Seans Şekilleri
+              Session Formats
             </p>
-            <h2 className="text-3xl md:text-4xl">Çalışma Yöntemleri</h2>
+            <h2 className="text-3xl md:text-4xl">How We Work</h2>
           </div>
           <div className="grid gap-6 lg:grid-cols-2">
-          <Card className="lg:min-h-[480px]">
-            <CardHeader>
-              <CardTitle>Online Danışmanlık</CardTitle>
-              <CardDescription>
-                Güvenli bağlantı ile bulunduğunuz yerden görüşme.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-sm text-foreground/75">
-                Yoğun tempoya uyum sağlayan esnek saatler, gizlilik ve rahat bir
-                ortam.
-              </p>
-              <div className="relative overflow-hidden rounded-2xl bg-white/40 p-3 shadow-soft">
-                <div
-                  className="absolute inset-0 scale-110 bg-cover bg-center blur-2xl opacity-70"
-                  style={{
-                    backgroundImage:
-                      "url(/images/0ea0e497-92e8-4a39-be49-7c418bce28e3.jpg)"
-                  }}
-                />
-                <div className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-xl">
-                  <Image
-                    src="/images/0ea0e497-92e8-4a39-be49-7c418bce28e3.jpg"
-                    alt="Online danışmanlık görseli"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-contain"
+            <Card className="lg:min-h-[480px]">
+              <CardHeader>
+                <CardTitle>Online Counseling</CardTitle>
+                <CardDescription>
+                  Secure connection from wherever you are.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-sm text-foreground/75">
+                  Flexible hours for busy schedules, privacy, and a comfortable
+                  environment.
+                </p>
+                <div className="relative overflow-hidden rounded-2xl bg-white/40 p-3 shadow-soft">
+                  <div
+                    className="absolute inset-0 scale-110 bg-cover bg-center blur-2xl opacity-70"
+                    style={{
+                      backgroundImage:
+                        "url(/images/0ea0e497-92e8-4a39-be49-7c418bce28e3.jpg)"
+                    }}
                   />
+                  <div className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-xl">
+                    <Image
+                      src="/images/0ea0e497-92e8-4a39-be49-7c418bce28e3.jpg"
+                      alt="Online counseling"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
-          <Card className="lg:min-h-[480px]">
-            <CardHeader>
-              <CardTitle>Yüz Yüze Danışmanlık</CardTitle>
-              <CardDescription>
-                Sakin ve güvenli bir ofis ortamı.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-sm text-foreground/75">
-                Birebir görüşmeler, düzenli takip ve güven temelli iletişim.
-              </p>
-              <div className="relative overflow-hidden rounded-2xl bg-white/40 p-3 shadow-soft">
-                <div
-                  className="absolute inset-0 scale-110 bg-cover bg-center blur-2xl opacity-70"
-                  style={{ backgroundImage: "url(/images/ofis.JPG)" }}
-                />
-                <div className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-xl">
-                  <Image
-                    src="/images/ofis.JPG"
-                    alt="Yüz yüze danışmanlık ofis görseli"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-contain"
+              </CardContent>
+            </Card>
+            <Card className="lg:min-h-[480px]">
+              <CardHeader>
+                <CardTitle>In‑Person Counseling</CardTitle>
+                <CardDescription>Calm and secure office setting.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-sm text-foreground/75">
+                  One‑on‑one sessions, regular follow‑up, and trust‑based
+                  communication.
+                </p>
+                <div className="relative overflow-hidden rounded-2xl bg-white/40 p-3 shadow-soft">
+                  <div
+                    className="absolute inset-0 scale-110 bg-cover bg-center blur-2xl opacity-70"
+                    style={{ backgroundImage: "url(/images/ofis.JPG)" }}
                   />
+                  <div className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-xl">
+                    <Image
+                      src="/images/ofis.JPG"
+                      alt="Office counseling"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -223,9 +218,9 @@ export default async function HomePage() {
           <div className="flex items-end justify-between gap-6">
             <div>
               <p className="pb-2 text-sm uppercase tracking-[0.3em] text-foreground/60">
-                Çalışma Alanları
+                Areas of Focus
               </p>
-              <h2 className="text-3xl md:text-4xl">Odaklandığım temalar</h2>
+              <h2 className="text-3xl md:text-4xl">Themes I focus on</h2>
             </div>
           </div>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -240,14 +235,15 @@ export default async function HomePage() {
           </div>
           <div className="mt-8 rounded-2xl border border-border/70 bg-white/70 p-6 text-sm text-foreground/75">
             <p>
-              Aydın psikolog arayışında, danışmanlık sürecini güvenli ve etik bir
-              çerçevede yürütüyorum. Aydın’da yüz yüze görüşmeler ve online
-              seanslarla kaygı, stres ve ilişki temalarında destek sunuyorum.
+              If you are looking for an Aydin psychologist, I conduct the
+              counseling process within a safe and ethical framework. I offer
+              support in anxiety, stress, and relationship themes with in‑person
+              sessions in Aydin and online sessions.
             </p>
             <p className="mt-4">
-              Ofis görüşmeleri Aydın merkezde yapılır; online seanslar Aydın
-              genelinde erişilebilirlik sağlar. İhtiyaca uygun seans planı
-              birlikte oluşturulur.
+              Office sessions take place in central Aydin; online sessions make
+              support accessible across Aydin. A session plan is created together
+              according to your needs.
             </p>
           </div>
         </div>
@@ -271,7 +267,7 @@ export default async function HomePage() {
               <div className="relative z-10 aspect-[4/5] w-full p-4">
                 <Image
                   src="/images/a6d4335e-7c46-476d-96c7-f84638d5cd76.jpg"
-                  alt="Gülçin Bulut"
+                  alt="Gulcin Bulut"
                   fill
                   sizes="(max-width: 1024px) 100vw, 45vw"
                   className="object-contain"
@@ -281,12 +277,12 @@ export default async function HomePage() {
           </div>
           <div className="space-y-5 pt-8">
             <p className="text-sm uppercase tracking-[0.3em] text-foreground/60">
-              Hakkında
+              About
             </p>
-            <h2 className="text-3xl md:text-4xl">Kısa bir bakış</h2>
+            <h2 className="text-3xl md:text-4xl">A brief overview</h2>
             <p className="text-foreground/80">{excerpt}</p>
             <Button asChild variant="outline">
-              <Link href="/hakkinda">Devamını oku</Link>
+              <Link href="/en/hakkinda">Read more</Link>
             </Button>
           </div>
         </div>
@@ -299,51 +295,49 @@ export default async function HomePage() {
         <div className="container relative space-y-8">
           <div>
             <p className="pb-2 text-sm uppercase tracking-[0.3em] text-foreground/60">
-              İçerikler
+              Content
             </p>
-            <h2 className="text-3xl md:text-4xl">Sosyal Medya ve Podcast</h2>
+            <h2 className="text-3xl md:text-4xl">Social Media & Podcast</h2>
           </div>
           <div className="grid gap-8">
-          <Card className="bg-gradient-to-br from-white via-white to-accent/10">
-            <CardHeader>
-              <CardTitle>{podcast.title}</CardTitle>
-              <CardDescription>Podcast bölüm duyuruları.</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-5">
-              {podcastEmbeds.length ? (
+            <Card className="bg-gradient-to-br from-white via-white to-accent/10">
+              <CardHeader>
+                <CardTitle>{podcast.title}</CardTitle>
+                <CardDescription>Podcast episode updates.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-5">
+                {podcastEmbeds.length ? (
+                  <div className="grid gap-4 md:grid-cols-3">
+                    {podcastEmbeds.map((embedUrl) => (
+                      <SpotifyEmbed key={embedUrl} embedUrl={embedUrl} />
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-sm text-foreground/70">
+                    New episodes will be available here soon.
+                  </p>
+                )}
+                <Button asChild variant="ghost">
+                  <Link href="/en/icerikler">See episodes</Link>
+                </Button>
+              </CardContent>
+            </Card>
+            <Card className="bg-gradient-to-br from-white via-white to-accent-2/40">
+              <CardHeader>
+                <CardTitle>{social.platform}</CardTitle>
+                <CardDescription>Notes and short practices.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
                 <div className="grid gap-4 md:grid-cols-3">
-                  {podcastEmbeds.map((embedUrl) => (
-                    <SpotifyEmbed key={embedUrl} embedUrl={embedUrl} />
+                  {social.cards.map((card) => (
+                    <InstagramEmbed key={card.url} url={card.url} />
                   ))}
                 </div>
-              ) : (
-                <p className="text-sm text-foreground/70">
-                  Yeni bölümler yakında burada görünecek.
-                </p>
-              )}
-              <Button asChild variant="ghost">
-                <Link href="/icerikler">Bölümleri gör</Link>
-              </Button>
-            </CardContent>
-          </Card>
-          <Card className="bg-gradient-to-br from-white via-white to-accent-2/40">
-            <CardHeader>
-              <CardTitle>{social.platform}</CardTitle>
-              <CardDescription>
-                Psikoloji notları ve kısa pratikler.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid gap-4 md:grid-cols-3">
-                {social.cards.map((card) => (
-                  <InstagramEmbed key={card.url} url={card.url} />
-                ))}
-              </div>
-              <Button asChild variant="ghost">
-                <Link href="/icerikler">İçerikleri gör</Link>
-              </Button>
-            </CardContent>
-          </Card>
+                <Button asChild variant="ghost">
+                  <Link href="/en/icerikler">See content</Link>
+                </Button>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -354,11 +348,11 @@ export default async function HomePage() {
         <div className="container flex flex-col items-center gap-10">
           <div className="max-w-2xl text-center">
             <p className="text-sm uppercase tracking-[0.3em] text-foreground/60">
-              SSS
+              FAQ
             </p>
-            <h2 className="text-3xl md:text-4xl">Merak edilenler</h2>
+            <h2 className="text-3xl md:text-4xl">Frequently asked questions</h2>
             <p className="mt-4 text-foreground/70">
-              Sürece dair sık gelen soruların yanıtlarını burada bulabilirsiniz.
+              You can find answers to common questions about the process here.
             </p>
           </div>
           <Accordion
@@ -384,24 +378,24 @@ export default async function HomePage() {
           <div className="space-y-6">
             <div>
               <p className="pb-2 text-sm uppercase tracking-[0.3em] text-foreground/60">
-                İletişim
+                Contact
               </p>
-              <h2 className="text-3xl md:text-4xl">Birlikte başlayalım</h2>
+              <h2 className="text-3xl md:text-4xl">Let’s get started</h2>
               <p className="mt-3 text-foreground/70">
-                Sosyal medya ve WhatsApp üzerinden güncel içeriklere ve hızlı
-                iletişime ulaşabilirsiniz.
+                Reach out via social media or WhatsApp for updates and quick
+                communication.
               </p>
             </div>
 
             <div className="space-y-3 text-sm text-foreground/80">
               <a
-                href="https://wa.me/905340240934?text=Merhaba%2C%20randevu%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+                href="https://wa.me/905340240934?text=Hello%2C%20I%20would%20like%20to%20get%20information%20about%20an%20appointment."
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-3 rounded-2xl border border-border/70 bg-white/80 px-4 py-3 transition hover:text-foreground"
               >
                 <MessageCircle className="h-4 w-4 text-emerald-500" />
-                WhatsApp&apos;tan yaz
+                Message on WhatsApp
               </a>
               {contact.googleBusinessUrl ? (
                 <a
@@ -411,7 +405,7 @@ export default async function HomePage() {
                   className="flex items-center gap-3 rounded-2xl border border-border/70 bg-white/80 px-4 py-3 transition hover:text-foreground"
                 >
                   <MapPin className="h-4 w-4 text-amber-500" />
-                  Google İşletme Profilini görüntüle
+                  View Google Business Profile
                 </a>
               ) : null}
               <a
@@ -439,7 +433,7 @@ export default async function HomePage() {
                 className="flex items-center gap-3 rounded-2xl border border-border/70 bg-white/80 px-4 py-3 transition hover:text-foreground"
               >
                 <MapPin className="h-4 w-4 text-amber-500" />
-                Haritada aç
+                Open in Maps
               </a>
             </div>
 
@@ -477,7 +471,7 @@ export default async function HomePage() {
           <div className="overflow-hidden rounded-3xl border border-border/70 bg-white/70 shadow-soft">
             <DeferredIframe
               src={mapEmbedUrl}
-              title="Harita"
+              title="Map"
               wrapperClassName="h-[320px] w-full md:h-[360px]"
               iframeClassName="h-full w-full"
               referrerPolicy="no-referrer-when-downgrade"

@@ -101,7 +101,7 @@ export default async function RootLayout({
       <body>
         <SiteHeader />
         <main>{children}</main>
-        <SiteFooter />
+        <SiteFooter contact={contact} />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-D018J23Z4F" />
         <script
           dangerouslySetInnerHTML={{
