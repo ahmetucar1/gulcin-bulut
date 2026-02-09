@@ -63,7 +63,7 @@ export default async function RootLayout({
       "@type": "PostalAddress",
       streetAddress: "Kurtuluş, 2011. Sk. Bina Numara 5, Kat 5 Daire:29",
       postalCode: "09100",
-      addressLocality: "Efeler",
+      addressLocality: "Aydın",
       addressRegion: "Aydın",
       addressCountry: "TR"
     },
@@ -79,15 +79,12 @@ export default async function RootLayout({
     telephone: contact.phone,
     priceRange: "$$",
     hasMap: contact.mapUrl,
-    areaServed: [
-      { "@type": "AdministrativeArea", name: "Aydın" },
-      { "@type": "AdministrativeArea", name: "Efeler" }
-    ],
+    areaServed: [{ "@type": "AdministrativeArea", name: "Aydın" }],
     address: {
       "@type": "PostalAddress",
       streetAddress: "Kurtuluş, 2011. Sk. Bina Numara 5, Kat 5 Daire:29",
       postalCode: "09100",
-      addressLocality: "Efeler",
+      addressLocality: "Aydın",
       addressRegion: "Aydın",
       addressCountry: "TR"
     },

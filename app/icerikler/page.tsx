@@ -12,16 +12,16 @@ export const revalidate = 120;
 export const metadata: Metadata = {
   title: "İçerikler",
   description:
-    "Aydın psikolog içerikleri: psikoloji notları, podcast bölümleri ve güncel paylaşımlar.",
+    "Aydın psikolog içerikleri: Psikolog Gülçin Bulut’tan psikoloji notları, podcast bölümleri ve güncel paylaşımlar.",
   openGraph: {
     title: "Aydın Psikolog | İçerikler",
     description:
-      "Aydın psikolog içerikleri: psikoloji notları, podcast bölümleri ve güncel paylaşımlar."
+      "Aydın psikolog içerikleri: Psikolog Gülçin Bulut’tan psikoloji notları, podcast bölümleri ve güncel paylaşımlar."
   },
   twitter: {
     title: "Aydın Psikolog | İçerikler",
     description:
-      "Aydın psikolog içerikleri: psikoloji notları, podcast bölümleri ve güncel paylaşımlar."
+      "Aydın psikolog içerikleri: Psikolog Gülçin Bulut’tan psikoloji notları, podcast bölümleri ve güncel paylaşımlar."
   }
 };
 

@@ -5,16 +5,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 export const metadata: Metadata = {
   title: "Hizmetler",
   description:
-    "Aydın psikolog hizmetleri: online ve yüz yüze danışmanlık. Süreç, gizlilik ve teknik gereksinimler hakkında detaylar.",
+    "Aydın psikolog hizmetleri: Psikolog Gülçin Bulut ile online ve yüz yüze danışmanlık. Süreç, gizlilik ve teknik gereksinimler hakkında detaylar.",
   openGraph: {
     title: "Aydın Psikolog | Hizmetler",
     description:
-      "Aydın psikolog hizmetleri: online ve yüz yüze danışmanlık. Süreç, gizlilik ve teknik gereksinimler hakkında detaylar."
+      "Aydın psikolog hizmetleri: Psikolog Gülçin Bulut ile online ve yüz yüze danışmanlık. Süreç, gizlilik ve teknik gereksinimler hakkında detaylar."
   },
   twitter: {
     title: "Aydın Psikolog | Hizmetler",
     description:
-      "Aydın psikolog hizmetleri: online ve yüz yüze danışmanlık. Süreç, gizlilik ve teknik gereksinimler hakkında detaylar."
+      "Aydın psikolog hizmetleri: Psikolog Gülçin Bulut ile online ve yüz yüze danışmanlık. Süreç, gizlilik ve teknik gereksinimler hakkında detaylar."
   }
 };
 
@@ -61,7 +61,7 @@ export default function HizmetlerPage() {
           <Card>
             <CardHeader>
               <CardTitle>Yüz Yüze Danışmanlık</CardTitle>
-              <CardDescription>Aydın/Efeler’de ofis görüşmeleri.</CardDescription>
+              <CardDescription>Aydın’da ofis görüşmeleri.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4 text-sm text-foreground/75">
               <p>
@@ -101,8 +101,8 @@ export default function HizmetlerPage() {
               <CardTitle>Konum ve Teknik</CardTitle>
             </CardHeader>
             <CardContent className="text-sm text-foreground/75">
-              Yüz yüze seanslar Aydın/Efeler’de gerçekleştirilir. Online seanslar
-              için bağlantı bilgileri randevu sonrası iletilir.
+              Yüz yüze seanslar Aydın’da gerçekleştirilir. Online seanslar için
+              bağlantı bilgileri randevu sonrası iletilir.
             </CardContent>
           </Card>
         </div>

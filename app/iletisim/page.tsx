@@ -9,16 +9,16 @@ import { getContact } from "@/lib/content";
 export const metadata: Metadata = {
   title: "İletişim",
   description:
-    "Aydın psikolog iletişim bilgileri. WhatsApp, telefon ve e‑posta üzerinden ulaşabilirsiniz.",
+    "Aydın psikolog iletişim bilgileri. Psikolog Gülçin Bulut’a WhatsApp, telefon ve e‑posta üzerinden ulaşabilirsiniz.",
   openGraph: {
     title: "Aydın Psikolog | İletişim",
     description:
-      "Aydın psikolog iletişim bilgileri. WhatsApp, telefon ve e‑posta üzerinden ulaşabilirsiniz."
+      "Aydın psikolog iletişim bilgileri. Psikolog Gülçin Bulut’a WhatsApp, telefon ve e‑posta üzerinden ulaşabilirsiniz."
   },
   twitter: {
     title: "Aydın Psikolog | İletişim",
     description:
-      "Aydın psikolog iletişim bilgileri. WhatsApp, telefon ve e‑posta üzerinden ulaşabilirsiniz."
+      "Aydın psikolog iletişim bilgileri. Psikolog Gülçin Bulut’a WhatsApp, telefon ve e‑posta üzerinden ulaşabilirsiniz."
   }
 };
 

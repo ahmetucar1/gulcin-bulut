@@ -15,18 +15,21 @@ import { getAboutExcerpt, getContact, getPodcast, getSocial } from "@/lib/conten
 export const revalidate = 120;
 
 export const metadata: Metadata = {
-  title: "Aydın Psikolog | Psikolog Gülçin Bulut",
+  title: "AYDIN PSİKOLOG",
   description:
-    "Aydın’da online ve yüz yüze psikolojik danışmanlık. Kaygı, stres ve ilişki temalarında güvenli bir danışmanlık süreci.",
+    "Aydın psikolog arayışında Psikolog Gülçin Bulut ile online ve yüz yüze psikolojik danışmanlık. Aydın psikolog desteği için güvenli bir süreç.",
+  alternates: {
+    canonical: "/aydin-psikolog"
+  },
   openGraph: {
-    title: "Aydın Psikolog | Psikolog Gülçin Bulut",
+    title: "AYDIN PSİKOLOG",
     description:
-      "Aydın’da online ve yüz yüze psikolojik danışmanlık. Kaygı, stres ve ilişki temalarında güvenli bir danışmanlık süreci."
+      "Aydın psikolog arayışında Psikolog Gülçin Bulut ile online ve yüz yüze psikolojik danışmanlık. Aydın psikolog desteği için güvenli bir süreç."
   },
   twitter: {
-    title: "Aydın Psikolog | Psikolog Gülçin Bulut",
+    title: "AYDIN PSİKOLOG",
     description:
-      "Aydın’da online ve yüz yüze psikolojik danışmanlık. Kaygı, stres ve ilişki temalarında güvenli bir danışmanlık süreci."
+      "Aydın psikolog arayışında Psikolog Gülçin Bulut ile online ve yüz yüze psikolojik danışmanlık. Aydın psikolog desteği için güvenli bir süreç."
   }
 };
 

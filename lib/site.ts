@@ -1,8 +1,10 @@
 export const siteConfig = {
   name: "Psikolog Gülçin Bulut",
   description:
-    "Aydın psikolog hizmeti: online ve yüz yüze psikolojik danışmanlık. Modern, minimal ve güven veren bir danışmanlık deneyimi.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://psikologgulcin.com"
+    "Aydın psikolog arayışında Psikolog Gülçin Bulut ile online ve yüz yüze psikolojik danışmanlık. Modern, minimal ve güven veren bir danışmanlık deneyimi.",
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://psikologgulcin.com")
+    .trim()
+    .replace(/\/+$/, "")
 };
 
 export const navigation = [
