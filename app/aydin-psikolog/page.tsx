@@ -62,9 +62,26 @@ const faqs = [
 ];
 
 export default function AydinPsikologPage() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer
+      }
+    }))
+  };
+
   return (
     <div className="section-padding">
       <div className="container space-y-12">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
         <header className="space-y-4">
           <p className="text-sm uppercase tracking-[0.3em] text-foreground/60">
             Aydın
