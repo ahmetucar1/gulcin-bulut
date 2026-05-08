@@ -85,6 +85,18 @@ type PodcastCard = {
   thumbnailUrl?: string | null;
 };
 
+type BlogPost = {
+  slug: string;
+  title: string;
+  titleEn?: string;
+  excerpt: string;
+  excerptEn?: string;
+  content: string;
+  contentEn?: string;
+  image: string;
+  date: string;
+};
+
 async function getSocialFromFirestore() {
   if (!adminDb) return null;
   const snapshot = await adminDb.collection("settings").doc("social").get();
@@ -134,34 +146,14 @@ async function getBlogPostsFromFirestore() {
     .collection("blogPosts")
     .orderBy("date", "desc")
     .get();
-  return snapshot.docs.map((doc) => doc.data()) as {
-    slug: string;
-    title: string;
-    titleEn?: string;
-    excerpt: string;
-    excerptEn?: string;
-    content: string;
-    contentEn?: string;
-    image: string;
-    date: string;
-  }[];
+  return snapshot.docs.map((doc) => doc.data()) as BlogPost[];
 }
 
 async function getBlogPostFromFirestore(slug: string) {
   if (!adminDb) return undefined;
   const snapshot = await adminDb.collection("blogPosts").doc(slug).get();
   if (!snapshot.exists) return undefined;
-  return snapshot.data() as {
-    slug: string;
-    title: string;
-    titleEn?: string;
-    excerpt: string;
-    excerptEn?: string;
-    content: string;
-    contentEn?: string;
-    image: string;
-    date: string;
-  };
+  return snapshot.data() as BlogPost;
 }
 
 const getSocialCached = unstable_cache(getSocialFromFirestore, ["social"], {
@@ -262,15 +254,7 @@ export async function getPodcast() {
   };
 }
 
-async function ensureEnglishPost(post: {
-  slug: string;
-  title: string;
-  titleEn?: string;
-  excerpt: string;
-  excerptEn?: string;
-  content: string;
-  contentEn?: string;
-}) {
+async function ensureEnglishPost(post: BlogPost) {
   const titleSame =
     post.titleEn?.trim() &&
     post.titleEn.trim().toLowerCase() === post.title.trim().toLowerCase();
@@ -344,17 +328,7 @@ export async function getBlogPosts(locale: "tr" | "en" = "tr") {
 
   const raw = readFile("blog.json");
   const data = JSON.parse(raw) as {
-    posts: {
-      slug: string;
-      title: string;
-      titleEn?: string;
-      excerpt: string;
-      excerptEn?: string;
-      content: string;
-      contentEn?: string;
-      image: string;
-      date: string;
-    }[];
+    posts: BlogPost[];
   };
 
   const posts = data.posts ?? [];
